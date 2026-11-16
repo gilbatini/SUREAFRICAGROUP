@@ -385,7 +385,7 @@ export const GlobalFooter: React.FC<FooterProps> = ({
 };
 
 export const MobileWhatsAppFab: React.FC<{ onClick: () => void }> = ({ onClick }) => (
-  <div className="sticky bottom-3 z-30 flex justify-end px-3 pointer-events-none">
+  <div className="sticky bottom-4 z-30 flex justify-start px-4 pointer-events-none">
     <button
       type="button"
       onClick={onClick}

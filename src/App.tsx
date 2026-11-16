@@ -4,6 +4,7 @@ import { PAGE_METADATA } from './data/content';
 import { Language, PageId, ViewportVariant } from './types';
 import { SureAfricaLogo } from './components/BrandMark';
 import { DeviceShowcase } from './components/DeviceShowcase';
+import { ChatWidget } from './components/ChatWidget';
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
 import { OceanFreightPage } from './pages/OceanFreightPage';
@@ -202,6 +203,7 @@ export default function App() {
         <main className="w-full max-w-[1440px] mx-auto">
           {renderPage(activeLivePage, liveVariant)}
         </main>
+        <ChatWidget lang={lang} variant={liveVariant} onNavigate={handleNavigate} />
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { ALL_SERVICES, COPY, IMAGES } from '../data/content';
+import { ALL_SERVICES, COPY, IMAGES, SERVICE_INCLUDES } from '../data/content';
 import { Language, PageId, ViewportVariant } from '../types';
 import { MediaFrame, MonoLabel, ServiceIcon } from '../components/BrandMark';
 import { FloatingNavbar, GlobalFooter, MobileWhatsAppFab } from '../components/GlobalChrome';
@@ -130,6 +130,20 @@ export const ServicesPage: React.FC<PageProps> = ({
             <p className="mt-2 text-sm text-[#4B5563] max-w-2xl leading-relaxed">
               {selectedService.shortDesc}
             </p>
+            {SERVICE_INCLUDES[selectedService.id] && (
+              <ul
+                className={`mt-4 grid gap-x-6 gap-y-2 max-w-2xl ${
+                  isMobile ? 'grid-cols-1' : 'grid-cols-2'
+                }`}
+              >
+                {SERVICE_INCLUDES[selectedService.id].map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-[13px] text-[#0B0D12]">
+                    <span className="mt-1.5 w-1.5 h-1.5 bg-[#1434CB] shrink-0" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <button

@@ -25,6 +25,11 @@ WHAT SURE AFRICA DOES
 ROUTES FROM DAR ES SALAAM
 Zanzibar, Uganda (Kampala), Zambia (Lusaka/Copperbelt, via Tunduma), Rwanda (Kigali, via Rusumo), DRC (Lubumbashi/East), Comoros, Seychelles, Mauritius. Inbound from UAE, China and India.
 
+USEFUL GUIDANCE
+- LCL vs FCL: below roughly 13–15 CBM, LCL is usually cheaper; above that FCL often costs less per unit. Compare total landed cost.
+- Common Tanzania import documents: commercial invoice, packing list, bill of lading or air waybill, certificate of origin, importer TIN; TBS Certificate of Conformity (PVoC) for regulated products; permits for restricted goods (e.g. TMDA, TPHPA). The team checks documents before arrival.
+- Door-to-door from suppliers in the UAE, China or India is available. Marine cargo insurance is available on request.
+
 HOW IT WORKS
 1) Request a quote with origin, destination, cargo type, weight or CBM. 2) Book and schedule pickup. 3) Sure Africa ships and clears customs. 4) Delivered and tracked to proof of delivery.
 

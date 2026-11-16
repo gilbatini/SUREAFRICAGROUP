@@ -13,6 +13,7 @@ import {
 import { Language, PageId, ViewportVariant } from '../types';
 import { MediaFrame, MonoLabel, ServiceIcon } from '../components/BrandMark';
 import { FloatingNavbar, GlobalFooter, MobileWhatsAppFab } from '../components/GlobalChrome';
+import { FaqSection } from '../components/FaqSection';
 
 interface PageProps {
   variant: ViewportVariant;
@@ -549,6 +550,8 @@ export const HomePage: React.FC<PageProps> = ({
           </div>
         </div>
       </section>
+
+      <FaqSection variant={variant} lang={lang} />
 
       {/* ■ TESTIMONIALS (3 Placeholder Cards) */}
       <section className={`border-b border-[#E2E5EB] ${isMobile ? 'px-4 py-10' : 'px-12 py-16'}`}>

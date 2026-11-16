@@ -9,6 +9,7 @@ import {
 import { Language, PageId, ViewportVariant } from '../types';
 import { MediaFrame, MonoLabel, ServiceIcon } from '../components/BrandMark';
 import { FloatingNavbar, GlobalFooter, MobileWhatsAppFab } from '../components/GlobalChrome';
+import { FaqSection } from '../components/FaqSection';
 
 interface PageProps {
   variant: ViewportVariant;
@@ -409,6 +410,8 @@ export const OceanFreightPage: React.FC<PageProps> = ({
           </div>
         </div>
       </section>
+
+      <FaqSection variant={variant} lang={lang} showDocuments />
 
       {/* QUOTE CTA */}
       <section className={`bg-[#0B0D12] text-white ${isMobile ? 'px-4 py-10' : 'px-12 py-12'}`}>

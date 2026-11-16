@@ -678,3 +678,162 @@ export const LEADERSHIP_PLACEHOLDERS = [
     bio: '[Biography placeholder — LCL consolidation schedules from UAE, China, and India plus East African corridor dispatch.]',
   },
 ];
+
+/** What each service includes (shown on the Services page detail panel). */
+export const SERVICE_INCLUDES: Record<string, string[]> = {
+  'ocean-freight': [
+    'FCL (20ft, 40ft, 40ft HC) and shared-container LCL',
+    'Door-to-door or port-to-port, with origin pickup',
+    'Export and import customs handled in one booking',
+    'Reefer, out-of-gauge and dangerous goods on request',
+  ],
+  'air-freight': [
+    'Express and economy options into DAR and regional airports',
+    'Urgent spares, fragile, high-value and AOG parts',
+    'Sea–air combinations to balance cost and speed',
+    'Airport clearance and same-day dispatch in Dar es Salaam',
+  ],
+  'road-freight': [
+    'Full and part truckloads within Tanzania',
+    'Bonded transit to Uganda, Rwanda, Zambia and DRC',
+    'Border documentation at Tunduma, Rusumo and Mutukula',
+    'Milestone updates from loading to proof of delivery',
+  ],
+  'customs-clearance': [
+    'Document check before cargo arrives',
+    'HS code classification and tariff advice',
+    'TANCIS lodgement, duty assessment and port release',
+    'Permits for regulated goods (TBS, TMDA, TPHPA and others)',
+  ],
+  'warehousing-3pl': [
+    'Short-term and contract storage in Dar es Salaam',
+    'Stock visibility with regular inventory reports',
+    'Pick, pack, labelling and order dispatch',
+    'Storage that scales with seasonal demand',
+  ],
+  'direct-lcl': [
+    'Consolidation hubs in the UAE, China and India',
+    'Pay only for the CBM your cargo occupies',
+    'Insurance and destination clearance available',
+    'Ideal for small, frequent or multi-supplier orders',
+  ],
+  'sourcing-procurement': [
+    'Supplier search and background checks',
+    'Price and delivery-term negotiation',
+    'Purchase order follow-up and quality inspections',
+    'Consolidation of several suppliers into one shipment',
+  ],
+  'project-cargo': [
+    'Route surveys and permits for oversized loads',
+    'Breakbulk, flat-rack and low-bed transport',
+    'Lifting and site delivery planning',
+    'For construction, mining and energy projects',
+  ],
+  'dangerous-goods': [
+    'Classification and IMDG / IATA declarations',
+    'Correct packing, marking and labelling',
+    'Segregated handling and storage',
+    'Permits for chemicals and restricted cargo',
+  ],
+  'marine-yacht': [
+    'RoRo, LoLo and flat-rack shipping for boats',
+    'Custom cradles and secure lashing',
+    'Import clearance and marine-registry paperwork support',
+    'Delivery to Dar es Salaam and Zanzibar',
+  ],
+  'cross-docking': [
+    'Direct transfer from inbound to outbound trucks',
+    'Labelling, repacking and kitting',
+    'Quality and quantity checks before dispatch',
+    'Returns handling (reverse logistics)',
+  ],
+  packaging: [
+    'Export wooden crates and ISPM-15 fumigated pallets',
+    'Shrink-wrapping and moisture protection',
+    'Fragile and high-value packing',
+    'Marking and labelling to carrier standards',
+  ],
+};
+
+/** Common import documents for Tanzania (general guidance). */
+export const IMPORT_DOCUMENTS = [
+  'Commercial invoice',
+  'Packing list',
+  'Bill of lading or air waybill',
+  'Certificate of origin',
+  'Importer TIN and business registration',
+  'Certificate of Conformity (TBS PVoC) for regulated products',
+  'Permits or licences for restricted goods (e.g. TMDA, TPHPA)',
+  'Insurance certificate, if cargo is insured',
+];
+
+export const FAQS: Record<Language, { q: string; a: string }[]> = {
+  en: [
+    {
+      q: 'What is LCL shipping?',
+      a: 'LCL (less than container load) means your cargo shares a container with other shippers. You pay only for the space you use, which makes it the cheaper option for smaller or frequent shipments.',
+    },
+    {
+      q: 'Should I choose LCL or FCL?',
+      a: 'As a rough guide, under about 13–15 CBM LCL is usually cheaper; above that a full container (FCL) often costs less per unit and is handled less. Compare the total landed cost, not just the ocean freight. We can price both for you.',
+    },
+    {
+      q: 'Which documents do I need to import into Tanzania?',
+      a: 'Usually a commercial invoice, packing list, bill of lading or air waybill, certificate of origin and your TIN. Some products also need a TBS Certificate of Conformity or permits from regulators such as TMDA. We check your documents before the cargo arrives.',
+    },
+    {
+      q: 'How long does customs clearance take?',
+      a: 'It depends on the goods, the documents and any inspections. Correct paperwork lodged before arrival is the biggest factor. Our team will give you an estimate for your specific shipment.',
+    },
+    {
+      q: 'Do you deliver to Uganda, Rwanda, Zambia and DRC?',
+      a: 'Yes. We move cargo from Dar es Salaam port by road under transit bond to Kampala, Kigali, Lusaka, the Copperbelt and eastern DRC, and handle the border paperwork.',
+    },
+    {
+      q: 'Do you offer door-to-door service?',
+      a: 'Yes. We can collect from your supplier in the UAE, China or India, ship, clear customs and deliver to your warehouse, shop or site.',
+    },
+    {
+      q: 'Can you ship dangerous or temperature-sensitive goods?',
+      a: 'Yes, with the right declarations, packing and permits. Tell us the product and its classification when you request a quote.',
+    },
+    {
+      q: 'Is my cargo insured?',
+      a: 'Marine cargo insurance is available for every shipment based on its value. We recommend it, especially for LCL and high-value goods.',
+    },
+  ],
+  sw: [
+    {
+      q: 'Usafirishaji wa LCL ni nini?',
+      a: 'LCL ni pale mzigo wako unaposhiriki kontena moja na wasafirishaji wengine. Unalipia nafasi unayotumia tu, hivyo ni nafuu kwa mizigo midogo au ya mara kwa mara.',
+    },
+    {
+      q: 'Nichague LCL au FCL?',
+      a: 'Kwa ujumla, chini ya takriban CBM 13–15 LCL huwa nafuu zaidi; zaidi ya hapo kontena zima (FCL) mara nyingi huwa nafuu kwa kila kipimo. Linganisha gharama zote hadi mzigo kufika. Tunaweza kukupa bei za zote mbili.',
+    },
+    {
+      q: 'Ni nyaraka gani zinahitajika kuingiza mizigo Tanzania?',
+      a: 'Kwa kawaida ankara ya biashara, orodha ya ufungashaji, hati ya usafirishaji (B/L au AWB), cheti cha asili na TIN yako. Bidhaa nyingine zinahitaji cheti cha TBS au vibali vya TMDA. Tunakagua nyaraka zako kabla mzigo haujafika.',
+    },
+    {
+      q: 'Uondoshaji wa forodha huchukua muda gani?',
+      a: 'Inategemea bidhaa, nyaraka na ukaguzi. Nyaraka sahihi zilizowasilishwa mapema ndizo husaidia zaidi. Timu yetu itakupa makadirio ya mzigo wako.',
+    },
+    {
+      q: 'Mnafikisha mizigo Uganda, Rwanda, Zambia na DRC?',
+      a: 'Ndiyo. Tunasafirisha kutoka Bandari ya Dar es Salaam kwa barabara chini ya dhamana ya transit hadi Kampala, Kigali, Lusaka, Copperbelt na mashariki mwa DRC.',
+    },
+    {
+      q: 'Mnatoa huduma ya mlango hadi mlango?',
+      a: 'Ndiyo. Tunachukua mzigo kwa msambazaji wako UAE, China au India, tunasafirisha, tunatoa forodha na kufikisha ghalani, dukani au eneo la mradi.',
+    },
+    {
+      q: 'Mnasafirisha mizigo hatari au inayohitaji ubaridi?',
+      a: 'Ndiyo, kwa matamko, ufungashaji na vibali sahihi. Tuambie aina ya bidhaa unapoomba bei.',
+    },
+    {
+      q: 'Mzigo wangu una bima?',
+      a: 'Bima ya mizigo inapatikana kwa kila usafirishaji kulingana na thamani. Tunaishauri hasa kwa LCL na bidhaa za thamani kubwa.',
+    },
+  ],
+};

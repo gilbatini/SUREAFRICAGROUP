@@ -39,7 +39,7 @@ export const FloatingNavbar: React.FC<NavProps> = ({
   const navItems: { id: PageId; label: string }[] = [
     { id: 'home', label: t.nav.home },
     { id: 'services', label: t.nav.services },
-    { id: 'ocean-freight', label: lang === 'sw' ? 'BAHARI' : 'OCEAN FREIGHT' },
+    { id: 'routes', label: t.nav.routes },
     { id: 'tracking', label: t.nav.tracking },
     { id: 'about', label: t.nav.about },
     { id: 'contact', label: t.nav.contact },
@@ -101,7 +101,9 @@ export const FloatingNavbar: React.FC<NavProps> = ({
         {!isMobile && (
           <nav aria-label="Main" className="flex items-center gap-1">
             {navItems.map((item) => {
-              const active = activePage === item.id;
+              const active =
+                activePage === item.id ||
+                (item.id === 'routes' && activePage.startsWith('route:'));
               return (
                 <button
                   key={item.id}
@@ -174,9 +176,9 @@ export const FloatingNavbar: React.FC<NavProps> = ({
                   key={item.id}
                   type="button"
                   onClick={() => go(item.id)}
-                  aria-current={activePage === item.id ? 'page' : undefined}
+                  aria-current={activePage === item.id || (item.id === 'routes' && activePage.startsWith('route:')) ? 'page' : undefined}
                   className={`flex items-center justify-between px-3 py-3 rounded-lg font-mono text-xs uppercase tracking-wider text-left transition-colors cursor-pointer ${
-                    activePage === item.id
+                    activePage === item.id || (item.id === 'routes' && activePage.startsWith('route:'))
                       ? 'bg-[#1434CB] text-white'
                       : 'bg-[#F4F5F7] text-[#0B0D12] hover:bg-[#E5E8EF]'
                   }`}
@@ -221,7 +223,7 @@ export const GlobalFooter: React.FC<FooterProps> = ({
     { id: 'home', label: t.nav.home },
     { id: 'about', label: t.nav.about },
     { id: 'services', label: t.nav.services },
-    { id: 'route-mutukula', label: t.nav.routes },
+    { id: 'routes', label: t.nav.routes },
     { id: 'tracking', label: t.nav.tracking },
     { id: 'contact', label: t.nav.contact },
   ];

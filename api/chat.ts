@@ -33,6 +33,11 @@ USEFUL GUIDANCE
 DAR ES SALAAM → MUTUKULA → KAMPALA CORRIDOR
 Road route: Dar es Salaam port → Morogoro → Dodoma → Manyoni → Singida → Nzega → Kahama → Biharamulo → Muleba → Bukoba → Mutukula one-stop border post (TRA and URA clear together, one stop) → Masaka → Kampala. About 1,470 km to Mutukula and about 1,715 km to Kampala by road. Transit days are confirmed per booking. The route has its own page on the website ("Routes").
 
+ROUTES INTO UGANDA THROUGH MOMBASA (Northern Corridor)
+From China (Shanghai, Ningbo, Shenzhen, Guangzhou, Yiwu consolidation), the UAE (Jebel Ali/Dubai) and Japan (used vehicles RoRo or in containers, plus spare parts): sea to the Port of Mombasa, then road via Voi, Nairobi, Nakuru, Eldoret, the Malaba one-stop border post (Busia as alternative), Tororo, Jinja to Kampala. Mombasa to Kampala is about 1,170 km by road. Uganda-bound cargo is declared once with URA under the EAC Single Customs Territory, taxes are paid while cargo is at Mombasa, and it moves under one regional bond with electronic tracking.
+Japanese used vehicles for Uganda: right-hand drive only; URA guidance in 2026 says vehicles 15 years old or older cannot be imported for registration; a Certificate of Road Worthiness from a UNBS-approved inspector in Japan is needed before shipping; older vehicles pay an environmental levy. Tell people to confirm the current rules before buying.
+Each route has its own page under "Routes" on the website.
+
 HOW IT WORKS
 1) Request a quote with origin, destination, cargo type, weight or CBM. 2) Book and schedule pickup. 3) Sure Africa ships and clears customs. 4) Delivered and tracked to proof of delivery.
 

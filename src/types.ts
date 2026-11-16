@@ -1,8 +1,13 @@
+import type { RouteSlug } from './data/routes';
+
+export type RoutePageId = `route:${RouteSlug}`;
+
 export type PageId =
   | 'home'
   | 'services'
   | 'ocean-freight'
-  | 'route-mutukula'
+  | 'routes'
+  | RoutePageId
   | 'book'
   | 'tracking'
   | 'about'
@@ -17,6 +22,8 @@ export interface RouteLane {
   id: string;
   origin: string;
   destination: string;
+  /** Links the lane to its route page, if it has one. */
+  routeSlug?: RouteSlug;
   corridorType: 'regional' | 'islands' | 'inbound';
   mode: string;
   transitPlaceholder: string;

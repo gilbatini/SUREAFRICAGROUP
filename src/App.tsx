@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Layers, Monitor } from 'lucide-react';
-import { PAGE_METADATA } from './data/content';
+import { PAGE_METADATA as BASE_PAGE_METADATA } from './data/content';
 import { Language, PageId, ViewportVariant } from './types';
 import { SureAfricaLogo } from './components/BrandMark';
 import { DeviceShowcase } from './components/DeviceShowcase';
 import { ChatWidget } from './components/ChatWidget';
-import { RouteMutukulaPage } from './pages/RouteMutukulaPage';
+import { RoutePage } from './pages/RoutePage';
+import { RoutesIndexPage } from './pages/RoutesIndexPage';
+import { ROUTES, routeBySlug } from './data/routes';
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
 import { OceanFreightPage } from './pages/OceanFreightPage';
@@ -15,29 +17,46 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { StyleGuidePage } from './pages/StyleGuidePage';
 
-const PAGE_PATHS: Record<PageId, string> = {
+// Design boards: base pages plus one board per route, inserted after the Routes index.
+const PAGE_METADATA = BASE_PAGE_METADATA.flatMap((m) =>
+  m.id === 'routes'
+    ? [
+        m,
+        ...ROUTES.map((r, i) => ({
+          id: `route:${r.slug}` as PageId,
+          code: `03${String.fromCharCode(67 + i)}`,
+          label: `03${String.fromCharCode(67 + i)}: ROUTE — ${r.short.toUpperCase()}`,
+          shortLabel: `03${String.fromCharCode(67 + i)} ${r.short}`,
+        })),
+      ]
+    : [m]
+);
+
+const PAGE_PATHS = {
   home: '/',
   services: '/services',
   'ocean-freight': '/services/ocean-freight',
-  'route-mutukula': '/routes/dar-es-salaam-mutukula',
+  routes: '/routes',
+  ...Object.fromEntries(ROUTES.map((r) => [`route:${r.slug}`, `/routes/${r.slug}`])),
   book: '/book',
   tracking: '/tracking',
   about: '/about',
   contact: '/contact',
   'style-guide': '/design/style-guide',
-};
+} as Record<PageId, string>;
 
-const PAGE_TITLES: Record<PageId, string> = {
+const PAGE_TITLES = {
   home: 'Freight Forwarding & Logistics, Tanzania & Uganda',
   services: 'Logistics Services',
   'ocean-freight': 'Ocean Freight (FCL & LCL)',
-  'route-mutukula': 'Dar es Salaam to Mutukula & Kampala Road Freight',
+  routes: 'Routes into Uganda & East Africa',
+  ...Object.fromEntries(ROUTES.map((r) => [`route:${r.slug}`, `${r.short} Freight`])),
   book: 'Book a Shipment',
   tracking: 'Track a Shipment',
   about: 'About Us',
   contact: 'Contact Us',
   'style-guide': 'Style Guide',
-};
+} as Record<PageId, string>;
 
 const pageFromPath = (path: string): PageId => {
   const clean = path.replace(/\/+$/, '') || '/';
@@ -124,6 +143,21 @@ export default function App() {
   };
 
   const renderPage = (pageId: PageId, variant: ViewportVariant) => {
+    if (pageId.startsWith('route:')) {
+      const route = routeBySlug(pageId.slice('route:'.length));
+      if (route) {
+        return (
+          <RoutePage
+            key={route.slug}
+            route={route}
+            variant={variant}
+            lang={lang}
+            onToggleLang={setLang}
+            onNavigate={handleNavigate}
+          />
+        );
+      }
+    }
     switch (pageId) {
       case 'home':
         return (
@@ -152,9 +186,9 @@ export default function App() {
             onNavigate={handleNavigate}
           />
         );
-      case 'route-mutukula':
+      case 'routes':
         return (
-          <RouteMutukulaPage
+          <RoutesIndexPage
             variant={variant}
             lang={lang}
             onToggleLang={setLang}

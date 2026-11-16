@@ -10,7 +10,8 @@ import {
   ROUTE_LANES,
   TESTIMONIALS,
 } from '../data/content';
-import { Language, PageId, ViewportVariant } from '../types';
+import { ROUTES } from '../data/routes';
+import { Language, PageId, RouteLane, ViewportVariant } from '../types';
 import { MediaFrame, MonoLabel, ServiceIcon } from '../components/BrandMark';
 import { FloatingNavbar, GlobalFooter, MobileWhatsAppFab } from '../components/GlobalChrome';
 import { FaqSection } from '../components/FaqSection';
@@ -33,10 +34,24 @@ export const HomePage: React.FC<PageProps> = ({
   const [routeFilter, setRouteFilter] = useState<'all' | 'regional' | 'islands' | 'inbound'>('all');
   const [activeStep, setActiveStep] = useState<number>(1); // Default Step 2 dark expanded like reference
 
+  // Lanes with a route page come from ROUTES; the rest stay in ROUTE_LANES.
+  const allLanes: RouteLane[] = [
+    ...ROUTES.map((r) => ({
+      id: r.slug,
+      routeSlug: r.slug,
+      origin: r.lane.origin,
+      destination: r.lane.destination,
+      corridorType: 'regional' as const,
+      mode: r.lane.mode,
+      transitPlaceholder: '[XX–XX Days · Est.]',
+      notes: r.lane.notes,
+    })),
+    ...ROUTE_LANES.filter((l) => l.id !== 'tz-ug'),
+  ];
   const filteredRoutes =
     routeFilter === 'all'
-      ? ROUTE_LANES
-      : ROUTE_LANES.filter((r) => r.corridorType === routeFilter);
+      ? allLanes
+      : allLanes.filter((r) => r.corridorType === routeFilter);
 
   const partnerSlots = Array.from({ length: 12 }, (_, idx) => ({
     id: idx + 1,
@@ -388,10 +403,10 @@ export const HomePage: React.FC<PageProps> = ({
                   <span className="font-mono text-[11px] px-2.5 py-1 rounded bg-[#F4F5F7] border border-[#E2E5EB] text-[#0B0D12] tabular-nums">
                     {lane.transitPlaceholder}
                   </span>
-                  {lane.id === 'tz-ug' && (
+                  {lane.routeSlug && (
                     <button
                       type="button"
-                      onClick={() => onNavigate('route-mutukula')}
+                      onClick={() => lane.routeSlug && onNavigate(`route:${lane.routeSlug}`)}
                       className="font-mono text-[11px] uppercase tracking-wider text-[#0B0D12] hover:text-[#1434CB] hover:underline cursor-pointer whitespace-nowrap"
                     >
                       Route map →

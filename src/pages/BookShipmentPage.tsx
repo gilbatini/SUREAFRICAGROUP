@@ -236,7 +236,7 @@ export const BookShipmentPage: React.FC<PageProps> = ({
                           type="tel"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          placeholder="Phone (e.g. +255 / +256 ...)"
+                          placeholder="Phone (e.g. +256 703 487880)"
                           className={`w-full border-b py-2.5 text-sm text-[#0B0D12] placeholder-[#6B7280] focus:outline-none ${
                             errors.phone
                               ? 'border-[#DC2626]'

@@ -13,22 +13,89 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { StyleGuidePage } from './pages/StyleGuidePage';
 
+const PAGE_PATHS: Record<PageId, string> = {
+  home: '/',
+  services: '/services',
+  'ocean-freight': '/services/ocean-freight',
+  book: '/book',
+  tracking: '/tracking',
+  about: '/about',
+  contact: '/contact',
+  'style-guide': '/design/style-guide',
+};
+
+const PAGE_TITLES: Record<PageId, string> = {
+  home: 'Freight Forwarding & Logistics in Tanzania',
+  services: 'Logistics Services',
+  'ocean-freight': 'Ocean Freight (FCL & LCL)',
+  book: 'Book a Shipment',
+  tracking: 'Track a Shipment',
+  about: 'About Us',
+  contact: 'Contact Us',
+  'style-guide': 'Style Guide',
+};
+
+const pageFromPath = (path: string): PageId => {
+  const clean = path.replace(/\/+$/, '') || '/';
+  const match = (Object.keys(PAGE_PATHS) as PageId[]).find(
+    (id) => PAGE_PATHS[id] === clean
+  );
+  return match ?? 'home';
+};
+
+const isDesignPath = (path: string) => path === '/design' || path === '/design/';
+
 export default function App() {
-  const [viewMode, setViewMode] = useState<'boards' | 'live'>('boards');
+  const [viewMode, setViewMode] = useState<'boards' | 'live'>(() =>
+    isDesignPath(window.location.pathname) ? 'boards' : 'live'
+  );
   const [boardFilter, setBoardFilter] = useState<'all' | PageId>('all');
-  const [activeLivePage, setActiveLivePage] = useState<PageId>('home');
+  const [activeLivePage, setActiveLivePage] = useState<PageId>(() =>
+    pageFromPath(window.location.pathname)
+  );
   const [lang, setLang] = useState<Language>('en');
   const [prefillRoute, setPrefillRoute] = useState<string>('');
   const [liveVariant, setLiveVariant] = useState<ViewportVariant>('desktop');
 
   useEffect(() => {
     const syncVariant = () => {
-      setLiveVariant(window.innerWidth < 768 ? 'mobile' : 'desktop');
+      setLiveVariant(window.innerWidth < 1024 ? 'mobile' : 'desktop');
     };
     syncVariant();
     window.addEventListener('resize', syncVariant);
     return () => window.removeEventListener('resize', syncVariant);
   }, []);
+
+  // Browser back/forward
+  useEffect(() => {
+    const onPop = () => {
+      const path = window.location.pathname;
+      if (isDesignPath(path)) {
+        setViewMode('boards');
+      } else {
+        setViewMode('live');
+        setActiveLivePage(pageFromPath(path));
+      }
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  // Keep URL + document title in sync with the live page
+  useEffect(() => {
+    if (viewMode !== 'live') {
+      document.title = 'Design System — Sure Africa Group (Tanzania) Limited';
+      return;
+    }
+    const path = PAGE_PATHS[activeLivePage];
+    if (window.location.pathname !== path) {
+      window.history.pushState(null, '', path);
+    }
+    document.title =
+      activeLivePage === 'home'
+        ? `Sure Africa Group (Tanzania) Limited — ${PAGE_TITLES.home}`
+        : `${PAGE_TITLES[activeLivePage]} — Sure Africa Group`;
+  }, [viewMode, activeLivePage]);
 
   const handleNavigate = (page: PageId, routeHint?: string) => {
     if (routeHint) {
@@ -128,9 +195,20 @@ export default function App() {
       ? PAGE_METADATA
       : PAGE_METADATA.filter((b) => b.id === boardFilter);
 
+  // Public website: the live pages only, no design-review chrome
+  if (viewMode === 'live') {
+    return (
+      <div className="min-h-screen bg-white text-[#0B0D12]">
+        <main className="w-full max-w-[1440px] mx-auto">
+          {renderPage(activeLivePage, liveVariant)}
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#EAECEF] text-[#0B0D12]">
-      {/* Studio Toolbar */}
+      {/* Studio Toolbar (design review at /design) */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#D5D8DF]">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 h-14 flex items-center justify-between gap-6">
           {/* Left: Brand */}
@@ -214,7 +292,7 @@ export default function App() {
                 type="button"
                 onClick={() => setViewMode('live')}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md font-mono text-[11px] uppercase tracking-wider transition-colors cursor-pointer whitespace-nowrap ${
-                  viewMode === 'live'
+                  (viewMode as string) === 'live'
                     ? 'bg-[#1434CB] text-white font-medium'
                     : 'text-[#4B5563] hover:text-[#0B0D12]'
                 }`}

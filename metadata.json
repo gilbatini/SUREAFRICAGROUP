@@ -1,0 +1,8 @@
+{
+  "name": "Sure Africa Logistics UI",
+  "description": "High-fidelity desktop (1440px) and mobile (390px) website UI system for Sure Africa Group (Tanzania) Limited.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

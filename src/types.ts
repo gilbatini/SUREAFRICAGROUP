@@ -2,6 +2,7 @@ export type PageId =
   | 'home'
   | 'services'
   | 'ocean-freight'
+  | 'route-mutukula'
   | 'book'
   | 'tracking'
   | 'about'

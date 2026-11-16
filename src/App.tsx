@@ -5,6 +5,7 @@ import { Language, PageId, ViewportVariant } from './types';
 import { SureAfricaLogo } from './components/BrandMark';
 import { DeviceShowcase } from './components/DeviceShowcase';
 import { ChatWidget } from './components/ChatWidget';
+import { RouteMutukulaPage } from './pages/RouteMutukulaPage';
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
 import { OceanFreightPage } from './pages/OceanFreightPage';
@@ -18,6 +19,7 @@ const PAGE_PATHS: Record<PageId, string> = {
   home: '/',
   services: '/services',
   'ocean-freight': '/services/ocean-freight',
+  'route-mutukula': '/routes/dar-es-salaam-mutukula',
   book: '/book',
   tracking: '/tracking',
   about: '/about',
@@ -29,6 +31,7 @@ const PAGE_TITLES: Record<PageId, string> = {
   home: 'Freight Forwarding & Logistics in Tanzania',
   services: 'Logistics Services',
   'ocean-freight': 'Ocean Freight (FCL & LCL)',
+  'route-mutukula': 'Dar es Salaam to Mutukula & Kampala Road Freight',
   book: 'Book a Shipment',
   tracking: 'Track a Shipment',
   about: 'About Us',
@@ -143,6 +146,15 @@ export default function App() {
       case 'ocean-freight':
         return (
           <OceanFreightPage
+            variant={variant}
+            lang={lang}
+            onToggleLang={setLang}
+            onNavigate={handleNavigate}
+          />
+        );
+      case 'route-mutukula':
+        return (
+          <RouteMutukulaPage
             variant={variant}
             lang={lang}
             onToggleLang={setLang}

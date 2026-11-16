@@ -30,6 +30,9 @@ USEFUL GUIDANCE
 - Common Tanzania import documents: commercial invoice, packing list, bill of lading or air waybill, certificate of origin, importer TIN; TBS Certificate of Conformity (PVoC) for regulated products; permits for restricted goods (e.g. TMDA, TPHPA). The team checks documents before arrival.
 - Door-to-door from suppliers in the UAE, China or India is available. Marine cargo insurance is available on request.
 
+DAR ES SALAAM → MUTUKULA → KAMPALA CORRIDOR
+Road route: Dar es Salaam port → Morogoro → Dodoma → Manyoni → Singida → Nzega → Kahama → Biharamulo → Muleba → Bukoba → Mutukula one-stop border post (TRA and URA clear together, one stop) → Masaka → Kampala. About 1,470 km to Mutukula and about 1,715 km to Kampala by road. Transit days are confirmed per booking. The route has its own page on the website ("Routes").
+
 HOW IT WORKS
 1) Request a quote with origin, destination, cargo type, weight or CBM. 2) Book and schedule pickup. 3) Sure Africa ships and clears customs. 4) Delivered and tracked to proof of delivery.
 

@@ -388,6 +388,15 @@ export const HomePage: React.FC<PageProps> = ({
                   <span className="font-mono text-[11px] px-2.5 py-1 rounded bg-[#F4F5F7] border border-[#E2E5EB] text-[#0B0D12] tabular-nums">
                     {lane.transitPlaceholder}
                   </span>
+                  {lane.id === 'tz-ug' && (
+                    <button
+                      type="button"
+                      onClick={() => onNavigate('route-mutukula')}
+                      className="font-mono text-[11px] uppercase tracking-wider text-[#0B0D12] hover:text-[#1434CB] hover:underline cursor-pointer whitespace-nowrap"
+                    >
+                      Route map →
+                    </button>
+                  )}
                   <button
                     type="button"
                     onClick={() => onNavigate('book', `${lane.origin} → ${lane.destination}`)}

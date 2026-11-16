@@ -217,7 +217,7 @@ export const GlobalFooter: React.FC<FooterProps> = ({
     { id: 'home', label: t.nav.home },
     { id: 'about', label: t.nav.about },
     { id: 'services', label: t.nav.services },
-    { id: 'ocean-freight', label: t.nav.routes },
+    { id: 'route-mutukula', label: t.nav.routes },
     { id: 'tracking', label: t.nav.tracking },
     { id: 'contact', label: t.nav.contact },
   ];

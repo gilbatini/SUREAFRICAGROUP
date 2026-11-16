@@ -25,6 +25,12 @@ export const PAGE_METADATA: { id: PageId; code: string; label: string; shortLabe
     label: '03: SERVICE DETAILS — OCEAN FREIGHT',
     shortLabel: '03 Ocean Freight',
   },
+  {
+    id: 'route-mutukula',
+    code: '03B',
+    label: '03B: ROUTE — DAR ES SALAAM TO MUTUKULA',
+    shortLabel: '03B Dar → Mutukula',
+  },
   { id: 'book', code: '04', label: '04: BOOK A SHIPMENT', shortLabel: '04 Book Shipment' },
   { id: 'tracking', code: '05', label: '05: SHIPMENT TRACKING', shortLabel: '05 Tracking' },
   { id: 'about', code: '06', label: '06: ABOUT', shortLabel: '06 About' },
@@ -245,11 +251,11 @@ export const ROUTE_LANES: RouteLane[] = [
   {
     id: 'tz-ug',
     origin: 'Dar es Salaam',
-    destination: 'Uganda (Kampala)',
+    destination: 'Uganda (Kampala) via Mutukula',
     corridorType: 'regional',
-    mode: 'Road / Lake Corridor',
+    mode: 'Road · Central Corridor (≈1,715 km)',
     transitPlaceholder: '[XX–XX Days · Est.]',
-    notes: 'Transit bond clearance via Central Corridor.',
+    notes: 'Bonded transit via Morogoro, Dodoma, Singida, Nzega, Bukoba and the Mutukula OSBP.',
   },
   {
     id: 'tz-zm',
@@ -835,5 +841,46 @@ export const FAQS: Record<Language, { q: string; a: string }[]> = {
       q: 'Mzigo wangu una bima?',
       a: 'Bima ya mizigo inapatikana kwa kila usafirishaji kulingana na thamani. Tunaishauri hasa kwa LCL na bidhaa za thamani kubwa.',
     },
+  ],
+};
+
+/** Dar es Salaam → Mutukula → Kampala road corridor (Central Corridor, northern branch). */
+export const MUTUKULA_CORRIDOR = {
+  facts: [
+    { label: 'Dar es Salaam → Mutukula', value: '≈1,470 km', note: 'Road distance' },
+    { label: 'Dar es Salaam → Kampala', value: '≈1,715 km', note: 'Road distance' },
+    { label: 'Border crossing', value: 'Mutukula OSBP', note: 'One-stop TRA + URA clearance' },
+    { label: 'Transit time', value: '[XX–XX days]', note: 'Confirmed per booking' },
+  ],
+  stops: [
+    { name: 'Dar es Salaam Port', region: 'Dar es Salaam', km: '0 km', note: 'Discharge, TANCIS transit entry, bond' },
+    { name: 'Morogoro', region: 'Morogoro', km: '', note: 'Central Corridor trunk road west' },
+    { name: 'Dodoma', region: 'Dodoma', km: '≈451 km', note: 'Capital; route turns north-west' },
+    { name: 'Manyoni', region: 'Singida', km: '', note: '' },
+    { name: 'Singida', region: 'Singida', km: '', note: '' },
+    { name: 'Nzega', region: 'Tabora', km: '', note: 'Junction for Mwanza and Rusumo roads' },
+    { name: 'Kahama', region: 'Shinyanga', km: '', note: '' },
+    { name: 'Biharamulo', region: 'Kagera', km: '', note: 'Into Kagera Region' },
+    { name: 'Muleba', region: 'Kagera', km: '', note: '' },
+    { name: 'Bukoba', region: 'Kagera', km: '', note: 'Lake Victoria shore' },
+    { name: 'Mutukula OSBP', region: 'TZ / UG border', km: '≈1,470 km', note: 'Single stop for customs and immigration' },
+    { name: 'Masaka', region: 'Uganda', km: '', note: '' },
+    { name: 'Kampala', region: 'Uganda', km: '≈1,715 km', note: 'Delivery or Uganda import clearance' },
+  ],
+  handles: [
+    'Port release and transit entry at Dar es Salaam',
+    'Bonded transit (customs bond) through Tanzania',
+    'Truck dispatch with GPS tracking and milestone updates',
+    'Border clearance at the Mutukula one-stop border post',
+    'Uganda import entry with URA, or onward transit',
+    'Delivery to Masaka, Kampala or your site, and empty container return',
+  ],
+  documents: [
+    'Original bill of lading (or telex release)',
+    'Commercial invoice and packing list',
+    'Certificate of origin (EAC or COMESA where it applies)',
+    'Transit declaration and customs bond',
+    'Uganda import entry and any URA / UNBS permits',
+    'Truck and driver documents for cross-border haulage',
   ],
 };

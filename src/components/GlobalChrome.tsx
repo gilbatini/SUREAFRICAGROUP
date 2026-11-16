@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowRight, Menu, MessageCircle, X } from 'lucide-react';
 import { COPY } from '../data/content';
 import { Language, PageId, ViewportVariant } from '../types';
@@ -25,139 +25,124 @@ export const FloatingNavbar: React.FC<NavProps> = ({
   const t = COPY[lang];
   const isMobile = variant === 'mobile';
 
+  // Close the mobile menu on Escape or when switching to desktop
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
+  useEffect(() => {
+    if (!isMobile) setMenuOpen(false);
+  }, [isMobile]);
+
   const navItems: { id: PageId; label: string }[] = [
     { id: 'home', label: t.nav.home },
     { id: 'services', label: t.nav.services },
-    { id: 'ocean-freight', label: 'OCEAN FREIGHT' },
+    { id: 'ocean-freight', label: lang === 'sw' ? 'BAHARI' : 'OCEAN FREIGHT' },
     { id: 'tracking', label: t.nav.tracking },
     { id: 'about', label: t.nav.about },
     { id: 'contact', label: t.nav.contact },
   ];
 
+  const go = (id: PageId) => {
+    onNavigate(id);
+    setMenuOpen(false);
+  };
+
+  const LangSwitch = (
+    <div
+      className="inline-flex items-center rounded-lg border border-[#E2E5EB] bg-[#F4F5F7] p-0.5 font-mono text-[11px]"
+      role="group"
+      aria-label="Language switch"
+    >
+      {(['en', 'sw'] as Language[]).map((code) => (
+        <button
+          key={code}
+          type="button"
+          onClick={() => onToggleLang(code)}
+          aria-pressed={lang === code}
+          className={`px-2 py-1 rounded-md uppercase transition-colors cursor-pointer ${
+            lang === code
+              ? 'bg-white text-[#0B0D12] font-medium'
+              : 'text-[#4B5563] hover:text-[#0B0D12]'
+          }`}
+        >
+          {code}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
-    <div className={`relative z-30 ${isMobile ? 'px-3 pt-3' : 'px-8 pt-5'}`}>
+    <div className={`relative z-40 ${isMobile ? 'px-3 pt-3' : 'px-8 pt-5'}`}>
       <header
-        className={`flex items-center justify-between gap-4 rounded-xl border px-4 py-2.5 transition-colors ${
+        className={`flex items-center justify-between gap-4 rounded-xl border px-4 py-2.5 ${
           darkHero
             ? 'bg-white/95 backdrop-blur-md border-white/30'
             : 'bg-white border-[#E2E5EB]'
         }`}
       >
-        {/* Left: Menu + Language Toggle (desktop) */}
-        <div className="flex items-center gap-3 shrink-0">
-          {!isMobile ? (
-            <>
-              <button
-                type="button"
-                onClick={() => setMenuOpen((prev) => !prev)}
-                aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-                className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#E2E5EB] text-[#0B0D12] hover:bg-[#F4F5F7] transition-colors cursor-pointer"
-              >
-                {menuOpen ? (
-                  <X className="w-4 h-4" strokeWidth={1.5} />
-                ) : (
-                  <Menu className="w-4 h-4" strokeWidth={1.5} />
-                )}
-              </button>
-              <div
-                className="inline-flex items-center rounded-lg border border-[#E2E5EB] bg-[#F4F5F7] p-0.5 font-mono text-[11px]"
-                role="group"
-                aria-label="Language switch"
-              >
-                <button
-                  type="button"
-                  onClick={() => onToggleLang('en')}
-                  className={`px-2 py-1 rounded-md transition-colors cursor-pointer whitespace-nowrap ${
-                    lang === 'en'
-                      ? 'bg-white text-[#0B0D12] font-medium'
-                      : 'text-[#4B5563] hover:text-[#0B0D12]'
-                  }`}
-                >
-                  EN
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onToggleLang('sw')}
-                  className={`px-2 py-1 rounded-md transition-colors cursor-pointer whitespace-nowrap ${
-                    lang === 'sw'
-                      ? 'bg-white text-[#0B0D12] font-medium'
-                      : 'text-[#4B5563] hover:text-[#0B0D12]'
-                  }`}
-                >
-                  SW
-                </button>
-              </div>
-            </>
-          ) : (
-            <button
-              type="button"
-              onClick={() => onNavigate('home')}
-              className="cursor-pointer focus:outline-none"
-              aria-label="Go to homepage"
-            >
-              <SureAfricaLogo size="sm" showWordmark={true} />
-            </button>
-          )}
-        </div>
+        {/* Logo */}
+        <button
+          type="button"
+          onClick={() => go('home')}
+          className="cursor-pointer shrink-0"
+          aria-label="Sure Africa — home"
+        >
+          <SureAfricaLogo size={isMobile ? 'sm' : 'md'} showWordmark={true} />
+        </button>
 
-        {/* Center: Logo (desktop) */}
+        {/* Desktop: inline links */}
         {!isMobile && (
-          <button
-            type="button"
-            onClick={() => onNavigate('home')}
-            className="cursor-pointer focus:outline-none shrink-0"
-            aria-label="Sure Africa Home"
-          >
-            <SureAfricaLogo size="md" showWordmark={true} />
-          </button>
+          <nav aria-label="Main" className="flex items-center gap-1">
+            {navItems.map((item) => {
+              const active = activePage === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => go(item.id)}
+                  aria-current={active ? 'page' : undefined}
+                  className={`relative px-2.5 py-2 rounded-md font-mono text-[11px] uppercase tracking-wider whitespace-nowrap transition-colors cursor-pointer ${
+                    active
+                      ? 'text-[#1434CB]'
+                      : 'text-[#4B5563] hover:text-[#0B0D12] hover:bg-[#F4F5F7]'
+                  }`}
+                >
+                  {active && (
+                    <span className="inline-block w-1.5 h-1.5 bg-[#1434CB] mr-1.5 align-middle" />
+                  )}
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
         )}
 
-        {/* Right: Book a Shipment CTA (desktop) / EN|SW + Hamburger (mobile) */}
+        {/* Right side */}
         <div className="flex items-center gap-2 shrink-0">
+          {LangSwitch}
           {isMobile ? (
-            <>
-              <div
-                className="inline-flex items-center rounded-md border border-[#E2E5EB] bg-[#F4F5F7] p-0.5 font-mono text-[10px]"
-                role="group"
-                aria-label="Language switch"
-              >
-                <button
-                  type="button"
-                  onClick={() => onToggleLang('en')}
-                  className={`px-1.5 py-0.5 rounded cursor-pointer ${
-                    lang === 'en' ? 'bg-white text-[#0B0D12] font-medium' : 'text-[#4B5563]'
-                  }`}
-                >
-                  EN
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onToggleLang('sw')}
-                  className={`px-1.5 py-0.5 rounded cursor-pointer ${
-                    lang === 'sw' ? 'bg-white text-[#0B0D12] font-medium' : 'text-[#4B5563]'
-                  }`}
-                >
-                  SW
-                </button>
-              </div>
-              <button
-                type="button"
-                onClick={() => setMenuOpen((prev) => !prev)}
-                aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-                className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#E2E5EB] text-[#0B0D12] hover:bg-[#F4F5F7] cursor-pointer"
-              >
-                {menuOpen ? (
-                  <X className="w-4 h-4" strokeWidth={1.5} />
-                ) : (
-                  <Menu className="w-4 h-4" strokeWidth={1.5} />
-                )}
-              </button>
-            </>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-[#E2E5EB] text-[#0B0D12] hover:bg-[#F4F5F7] cursor-pointer"
+            >
+              {menuOpen ? (
+                <X className="w-4 h-4" strokeWidth={1.5} />
+              ) : (
+                <Menu className="w-4 h-4" strokeWidth={1.5} />
+              )}
+            </button>
           ) : (
             <button
               type="button"
-              onClick={() => onNavigate('book')}
-              className="px-4 py-2 rounded-lg bg-[#0B0D12] text-white text-[13px] font-medium hover:bg-[#1434CB] active:translate-y-px transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              onClick={() => go('book')}
+              className="px-4 py-2 rounded-lg bg-[#0B0D12] text-white text-[13px] font-medium hover:bg-[#1434CB] active:translate-y-px transition-colors whitespace-nowrap cursor-pointer"
             >
               {t.nav.bookBtn}
             </button>
@@ -165,46 +150,47 @@ export const FloatingNavbar: React.FC<NavProps> = ({
         </div>
       </header>
 
-      {/* Dropdown Navigation Drawer */}
-      {menuOpen && (
-        <div className="mt-2 rounded-xl border border-[#E2E5EB] bg-white p-4 shadow-lg">
-          <div
-            className={`grid gap-2 ${
-              isMobile ? 'grid-cols-1' : 'grid-cols-3'
-            }`}
+      {/* Mobile drawer: overlays the page instead of pushing it down */}
+      {isMobile && menuOpen && (
+        <>
+          <button
+            type="button"
+            aria-label="Close menu"
+            onClick={() => setMenuOpen(false)}
+            className="fixed inset-0 z-30 bg-[#0B0D12]/30 cursor-default"
+          />
+          <nav
+            id="mobile-nav"
+            aria-label="Main"
+            className="absolute left-3 right-3 top-full mt-2 z-40 rounded-xl border border-[#E2E5EB] bg-white p-3 shadow-lg"
           >
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => {
-                  onNavigate(item.id);
-                  setMenuOpen(false);
-                }}
-                className={`flex items-center justify-between px-3 py-2.5 rounded-lg font-mono text-xs uppercase tracking-wider text-left transition-colors cursor-pointer ${
-                  activePage === item.id
-                    ? 'bg-[#1434CB] text-white'
-                    : 'bg-[#F4F5F7] text-[#0B0D12] hover:bg-[#E5E8EF]'
-                }`}
-              >
-                <span>{item.label}</span>
-                <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
-              </button>
-            ))}
-          </div>
-          {isMobile && (
+            <div className="grid grid-cols-1 gap-1.5">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => go(item.id)}
+                  aria-current={activePage === item.id ? 'page' : undefined}
+                  className={`flex items-center justify-between px-3 py-3 rounded-lg font-mono text-xs uppercase tracking-wider text-left transition-colors cursor-pointer ${
+                    activePage === item.id
+                      ? 'bg-[#1434CB] text-white'
+                      : 'bg-[#F4F5F7] text-[#0B0D12] hover:bg-[#E5E8EF]'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
+                </button>
+              ))}
+            </div>
             <button
               type="button"
-              onClick={() => {
-                onNavigate('book');
-                setMenuOpen(false);
-              }}
-              className="mt-3 w-full py-2.5 rounded-lg bg-[#0B0D12] text-white text-xs font-medium text-center cursor-pointer"
+              onClick={() => go('book')}
+              className="mt-3 w-full py-3 rounded-lg bg-[#0B0D12] text-white text-sm font-medium text-center cursor-pointer"
             >
               {t.nav.bookBtn}
             </button>
-          )}
-        </div>
+          </nav>
+        </>
       )}
     </div>
   );

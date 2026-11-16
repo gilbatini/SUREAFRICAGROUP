@@ -90,7 +90,11 @@ export const FloatingNavbar: React.FC<NavProps> = ({
           className="cursor-pointer shrink-0"
           aria-label="Sure Africa — home"
         >
-          <SureAfricaLogo size={isMobile ? 'sm' : 'md'} showWordmark={true} />
+          <SureAfricaLogo
+            size={isMobile ? 'sm' : 'md'}
+            showWordmark={true}
+            subline="Group Tanzania-Uganda Ltd."
+          />
         </button>
 
         {/* Desktop: inline links */}

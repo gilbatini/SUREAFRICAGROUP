@@ -28,7 +28,7 @@ const PAGE_PATHS: Record<PageId, string> = {
 };
 
 const PAGE_TITLES: Record<PageId, string> = {
-  home: 'Freight Forwarding & Logistics in Tanzania',
+  home: 'Freight Forwarding & Logistics, Tanzania & Uganda',
   services: 'Logistics Services',
   'ocean-freight': 'Ocean Freight (FCL & LCL)',
   'route-mutukula': 'Dar es Salaam to Mutukula & Kampala Road Freight',
@@ -88,7 +88,7 @@ export default function App() {
   // Keep URL + document title in sync with the live page
   useEffect(() => {
     if (viewMode !== 'live') {
-      document.title = 'Design System — Sure Africa Group (Tanzania) Limited';
+      document.title = 'Design System — Sure Africa Group Tanzania-Uganda Ltd.';
       return;
     }
     const path = PAGE_PATHS[activeLivePage];
@@ -97,7 +97,7 @@ export default function App() {
     }
     document.title =
       activeLivePage === 'home'
-        ? `Sure Africa Group (Tanzania) Limited — ${PAGE_TITLES.home}`
+        ? `Sure Africa Group Tanzania-Uganda Ltd. — ${PAGE_TITLES.home}`
         : `${PAGE_TITLES[activeLivePage]} — Sure Africa Group`;
   }, [viewMode, activeLivePage]);
 

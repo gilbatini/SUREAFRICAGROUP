@@ -37,12 +37,15 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
   showWordmark?: boolean;
   className?: string;
+  /** Small line under the wordmark, e.g. the legal entity name. */
+  subline?: string;
 }
 
 export const SureAfricaLogo: React.FC<LogoProps> = ({
   variant = 'default',
   size = 'md',
   showWordmark = true,
+  subline,
   className = '',
 }) => {
   const iconDims = size === 'lg' ? 56 : size === 'sm' ? 24 : 28;
@@ -83,10 +86,21 @@ export const SureAfricaLogo: React.FC<LogoProps> = ({
         <rect x="22" y="9" width="4" height="4" rx="0.5" fill={accentFill} />
       </svg>
       {showWordmark && (
-        <span
-          className={`font-medium tracking-[0.04em] uppercase whitespace-nowrap ${textSize} ${wordmarkColor}`}
-        >
-          SURE AFRICA
+        <span className="inline-flex flex-col items-start text-left leading-none">
+          <span
+            className={`font-medium tracking-[0.04em] uppercase whitespace-nowrap ${textSize} ${wordmarkColor}`}
+          >
+            SURE AFRICA
+          </span>
+          {subline && (
+            <span
+              className={`mt-1 font-mono text-[9px] tracking-[0.12em] uppercase whitespace-nowrap ${
+                variant === 'inverse' ? 'text-white/70' : 'text-[#4B5563]'
+              }`}
+            >
+              {subline}
+            </span>
+          )}
         </span>
       )}
     </span>

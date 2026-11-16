@@ -118,7 +118,7 @@ export const COPY: Record<
         'Freight forwarding, customs clearance, warehousing, and consolidated LCL shipping via Dar es Salaam.',
       primaryCta: 'REQUEST A QUOTE',
       secondaryCta: 'SEE HOW IT WORKS',
-      registeredNote: 'Registered in Dar es Salaam, Tanzania (BRELA, 2026)',
+      registeredNote: 'Sure Africa Group Tanzania-Uganda Ltd. · Dar es Salaam · Kampala',
     },
     sections: {
       whatWeDo: 'WHAT WE DO',
@@ -171,7 +171,7 @@ export const COPY: Record<
         'Usafirishaji wa mizigo, uondoshaji wa forodha, uhifadhi wa maghala na usafirishaji wa pamoja (LCL) kupitia Bandari ya Dar es Salaam.',
       primaryCta: 'OMBA BEI',
       secondaryCta: 'ONA JINSI INAVYOFANYA KAZI',
-      registeredNote: 'Imesajiliwa Dar es Salaam, Tanzania (BRELA, 2026)',
+      registeredNote: 'Sure Africa Group Tanzania-Uganda Ltd. · Dar es Salaam · Kampala',
     },
     sections: {
       whatWeDo: 'TUNACHOFANYA',

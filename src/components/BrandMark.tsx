@@ -22,6 +22,14 @@ import {
   Utensils,
   Warehouse,
   Wrench,
+  TriangleAlert,
+  Anchor,
+  Repeat,
+  Package,
+  Shirt,
+  FlaskConical,
+  Pickaxe,
+  HeartHandshake,
 } from 'lucide-react';
 
 interface LogoProps {
@@ -188,6 +196,22 @@ export const ServiceIcon: React.FC<{
       return <Search {...props} />;
     case 'package-plus':
       return <PackagePlus {...props} />;
+    case 'alert-triangle':
+      return <TriangleAlert {...props} />;
+    case 'anchor':
+      return <Anchor {...props} />;
+    case 'repeat':
+      return <Repeat {...props} />;
+    case 'package':
+      return <Package {...props} />;
+    case 'shirt':
+      return <Shirt {...props} />;
+    case 'flask':
+      return <FlaskConical {...props} />;
+    case 'pickaxe':
+      return <Pickaxe {...props} />;
+    case 'heart-handshake':
+      return <HeartHandshake {...props} />;
     case 'factory':
       return <Factory {...props} />;
     case 'shopping-bag':

@@ -36,7 +36,11 @@ export interface ServiceItem {
     | 'warehouse'
     | 'boxes'
     | 'search'
-    | 'package-plus';
+    | 'package-plus'
+    | 'alert-triangle'
+    | 'anchor'
+    | 'repeat'
+    | 'package';
   featured?: boolean;
 }
 

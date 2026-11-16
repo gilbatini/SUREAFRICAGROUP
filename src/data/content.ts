@@ -337,6 +337,11 @@ export const INDUSTRIES = [
   { name: 'Oil & Gas', icon: 'flame' },
   { name: 'Agriculture', icon: 'sprout' },
   { name: 'High-value Goods', icon: 'shield' },
+  { name: 'Fashion & Apparel', icon: 'shirt' },
+  { name: 'Chemicals & Hazardous', icon: 'flask' },
+  { name: 'Marine & Yachts', icon: 'anchor' },
+  { name: 'Mining & Minerals', icon: 'pickaxe' },
+  { name: 'NGOs & Humanitarian', icon: 'heart-handshake' },
 ] as const;
 
 export const HOW_IT_WORKS_STEPS = [
@@ -417,7 +422,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     title: 'Air Freight',
     titleSw: 'Usafirishaji wa Anga',
     shortDesc:
-      'Time-sensitive air cargo into Julius Nyerere International Airport (DAR) and regional East African gateways.',
+      'Time-sensitive air cargo into Julius Nyerere International Airport (DAR), including urgent spares, fragile goods and aircraft-on-ground (AOG) parts.',
     category: 'PRIORITY CARGO',
     iconName: 'plane',
   },
@@ -435,7 +440,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     title: 'Customs Clearance',
     titleSw: 'Uondoshaji wa Forodha',
     shortDesc:
-      'Harmonised tariff classification, TANCIS lodgement, TBS/TMDA permits, and port release coordination.',
+      'HS tariff advice before you ship, TANCIS lodgement, TBS/TMDA permits, and port release coordination.',
     category: 'COMPLIANCE',
     iconName: 'file-check',
   },
@@ -444,7 +449,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     title: 'Warehousing & 3PL',
     titleSw: 'Maghala na 3PL',
     shortDesc:
-      'Short-term and contract storage, palletisation, inventory counts, and last-mile dispatch from Dar es Salaam.',
+      'Short-term and contract storage, live stock visibility, palletisation, inventory counts, and last-mile dispatch from Dar es Salaam.',
     category: 'STORAGE',
     iconName: 'warehouse',
   },
@@ -474,6 +479,42 @@ export const ALL_SERVICES: ServiceItem[] = [
       'Out-of-gauge machinery, breakbulk loads, and route surveys for infrastructure and energy developments.',
     category: 'HEAVY LIFT',
     iconName: 'package-plus',
+  },
+  {
+    id: 'dangerous-goods',
+    title: 'Dangerous Goods Handling',
+    titleSw: 'Mizigo Hatari',
+    shortDesc:
+      'Classified chemicals, batteries, and flammables moved with correct IMDG/IATA declarations, labelling, and segregation.',
+    category: 'SPECIAL HANDLING',
+    iconName: 'alert-triangle',
+  },
+  {
+    id: 'marine-yacht',
+    title: 'Marine & Yacht Logistics',
+    titleSw: 'Usafirishaji wa Boti na Yoti',
+    shortDesc:
+      'RoRo and LoLo shipping for boats and yachts, cradle fabrication, and coordinated delivery to Dar es Salaam and Zanzibar.',
+    category: 'MARINE',
+    iconName: 'anchor',
+  },
+  {
+    id: 'cross-docking',
+    title: 'Cross-docking & Value-Added Services',
+    titleSw: 'Huduma za Ziada Ghalani',
+    shortDesc:
+      'Fast transfer between inbound and outbound loads, plus labelling, repacking, kitting, and quality checks before dispatch.',
+    category: 'FULFILMENT',
+    iconName: 'repeat',
+  },
+  {
+    id: 'packaging',
+    title: 'Packaging & Crating',
+    titleSw: 'Ufungashaji wa Mizigo',
+    shortDesc:
+      'Export-grade wooden crates, shrink-wrapping, and fumigated pallets that meet ISPM-15 and protect cargo on long routes.',
+    category: 'CARGO CARE',
+    iconName: 'package',
   },
 ];
 

@@ -64,7 +64,7 @@ export const ServicesPage: React.FC<PageProps> = ({
             End-to-end freight forwarding, customs brokerage, warehousing, and consolidated LCL shipping from Dar es Salaam across East Africa and global sourcing hubs.
           </p>
 
-          {/* 8 Frosted Service Cards */}
+          {/* Frosted Service Cards */}
           <div
             className={`mt-10 grid ${
               isMobile ? 'grid-cols-1 gap-3' : 'grid-cols-4 gap-3.5'

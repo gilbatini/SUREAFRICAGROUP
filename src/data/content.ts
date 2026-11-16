@@ -8,6 +8,14 @@ export const IMAGES = {
   nightTruck: '/src/assets/images/night_highway_truck_1794837493151.jpg',
 } as const;
 
+export const CONTACT = {
+  phoneDisplay: '+256 703 487880',
+  phoneTel: 'tel:+256703487880',
+  whatsappUrl:
+    'https://wa.me/256703487880?text=' +
+    encodeURIComponent('Hello Sure Africa, I would like a shipping quote.'),
+} as const;
+
 export const PAGE_METADATA: { id: PageId; code: string; label: string; shortLabel: string }[] = [
   { id: 'home', code: '01', label: '01: HOMEPAGE', shortLabel: '01 Homepage' },
   { id: 'services', code: '02', label: '02: SERVICES', shortLabel: '02 Services' },

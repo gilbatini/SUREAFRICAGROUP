@@ -8,6 +8,7 @@ import {
   Phone,
 } from 'lucide-react';
 import { Language, PageId, ViewportVariant } from '../types';
+import { CONTACT } from '../data/content';
 import { MonoLabel } from '../components/BrandMark';
 import { FloatingNavbar, GlobalFooter, MobileWhatsAppFab } from '../components/GlobalChrome';
 
@@ -158,7 +159,7 @@ export const ContactPage: React.FC<PageProps> = ({
                       Phone
                     </p>
                     <p className="text-sm text-[#0B0D12] mt-0.5 tabular-nums">
-                      [+255 XXX XXX XXX]
+                      <a href={CONTACT.phoneTel} className="hover:text-[#1434CB] underline-offset-2 hover:underline">{CONTACT.phoneDisplay}</a>
                     </p>
                   </div>
                 </div>
@@ -170,7 +171,9 @@ export const ContactPage: React.FC<PageProps> = ({
                       WhatsApp Desk
                     </p>
                     <p className="text-sm text-[#0B0D12] mt-0.5 tabular-nums">
-                      [+255 XXX XXX XXX]
+                      <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#1434CB] underline-offset-2 hover:underline">
+                        {CONTACT.phoneDisplay}
+                      </a>
                     </p>
                   </div>
                 </div>

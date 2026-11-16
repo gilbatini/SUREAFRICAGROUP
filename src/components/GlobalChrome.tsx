@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Menu, MessageCircle, X } from 'lucide-react';
-import { COPY } from '../data/content';
+import { CONTACT, COPY } from '../data/content';
 import { Language, PageId, ViewportVariant } from '../types';
 import { SureAfricaLogo } from './BrandMark';
 
@@ -270,7 +270,11 @@ export const GlobalFooter: React.FC<FooterProps> = ({
             <button
               key={soc.label}
               type="button"
-              onClick={() => onNavigate('contact')}
+              onClick={() =>
+                soc.label === 'WhatsApp'
+                  ? window.open(CONTACT.whatsappUrl, '_blank', 'noopener')
+                  : onNavigate('contact')
+              }
               aria-label={soc.label}
               className="w-8 h-8 rounded border border-[#D1D5DB] bg-white text-[#0B0D12] font-mono text-[11px] font-medium flex items-center justify-center hover:border-[#1434CB] hover:text-[#1434CB] transition-colors cursor-pointer"
             >
@@ -347,8 +351,15 @@ export const GlobalFooter: React.FC<FooterProps> = ({
                 {t.footer.contactHeading}
               </p>
               <p className="text-sm text-[#0B0D12]">[info@sureafrica.co.tz]</p>
-              <p className="text-sm text-[#0B0D12] mt-1 tabular-nums">[+255 XXX XXX XXX]</p>
-              <p className="text-xs text-[#4B5563] mt-1">WhatsApp: [+255 XXX XXX XXX]</p>
+              <p className="text-sm text-[#0B0D12] mt-1 tabular-nums">
+                <a href={CONTACT.phoneTel} className="hover:text-[#1434CB] underline-offset-2 hover:underline">{CONTACT.phoneDisplay}</a>
+              </p>
+              <p className="text-xs text-[#4B5563] mt-1">
+                WhatsApp:{' '}
+                <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#1434CB] underline-offset-2 hover:underline">
+                  {CONTACT.phoneDisplay}
+                </a>
+              </p>
             </div>
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#4B5563] mb-2">
@@ -384,16 +395,18 @@ export const GlobalFooter: React.FC<FooterProps> = ({
   );
 };
 
-export const MobileWhatsAppFab: React.FC<{ onClick: () => void }> = ({ onClick }) => (
+// onClick kept for compatibility with existing pages; the button always opens WhatsApp.
+export const MobileWhatsAppFab: React.FC<{ onClick?: () => void }> = () => (
   <div className="sticky bottom-4 z-30 flex justify-start px-4 pointer-events-none">
-    <button
-      type="button"
-      onClick={onClick}
+    <a
+      href={CONTACT.whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
       className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-[#0B0D12] text-white px-3.5 py-2.5 text-xs font-medium shadow-md border border-white/15 hover:bg-[#1434CB] transition-colors cursor-pointer"
     >
       <MessageCircle className="w-4 h-4 text-[#F2B705]" strokeWidth={1.5} />
       <span>WhatsApp</span>
-    </button>
+    </a>
   </div>
 );

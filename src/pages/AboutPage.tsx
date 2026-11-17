@@ -129,13 +129,11 @@ export const AboutPage: React.FC<PageProps> = ({
         </div>
       </section>
 
-      {/* ■ LEADERSHIP PLACEHOLDERS */}
+      {/* ■ TEAM */}
       <section className={`border-b border-[#E2E5EB] ${isMobile ? 'px-4 py-10' : 'px-12 py-16'}`}>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
           <MonoLabel>{t.sections.leadership}</MonoLabel>
-          <span className="font-mono text-[11px] text-[#6B7280]">
-            [Placeholder profiles — awaiting final director biographies]
-          </span>
+
         </div>
 
         <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-3 gap-5'}`}>

@@ -215,9 +215,9 @@ export const COPY: Record<
 };
 
 export const HOME_STATS = [
-  { value: '[XX+]', label: 'Shipments', note: 'Placeholder' },
-  { value: '[XX]', label: 'Destinations', note: 'Placeholder' },
-  { value: '[XX%]', label: 'On-time', note: 'Placeholder' },
+  { value: '12', label: 'Services', note: 'Sea · air · road · customs' },
+  { value: '14', label: 'Trade lanes', note: 'Africa · UAE · China · India · Japan' },
+  { value: '6 days', label: 'Ops desk', note: 'Mon–Sat · 08:00–18:00 EAT' },
 ];
 
 export const CORE_PILLARS = [
@@ -251,7 +251,7 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'Zanzibar',
     corridorType: 'islands',
     mode: 'Coastal Sea / Barge',
-    transitPlaceholder: '[XX–XX Days · Est.]',
+    transitPlaceholder: '≈1–2 days',
     notes: 'Regular island feeder & LCL dispatch.',
   },
   {
@@ -260,7 +260,7 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'Uganda (Kampala) via Mutukula',
     corridorType: 'regional',
     mode: 'Road · Central Corridor (≈1,715 km)',
-    transitPlaceholder: '[XX–XX Days · Est.]',
+    transitPlaceholder: '≈4–7 days',
     notes: 'Bonded transit via Morogoro, Dodoma, Singida, Nzega, Bukoba and the Mutukula OSBP.',
   },
   {
@@ -269,7 +269,7 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'Zambia (Lusaka / Copperbelt)',
     corridorType: 'regional',
     mode: 'Road Corridor (TAZARA Link)',
-    transitPlaceholder: '[XX–XX Days · Est.]',
+    transitPlaceholder: '≈5–8 days',
     notes: 'Tunduma border clearance & bonded haulage.',
   },
   {
@@ -278,7 +278,7 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'Rwanda (Kigali)',
     corridorType: 'regional',
     mode: 'Road Corridor',
-    transitPlaceholder: '[XX–XX Days · Est.]',
+    transitPlaceholder: '≈4–6 days',
     notes: 'Rusumo border transit documentation.',
   },
   {
@@ -287,7 +287,7 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'DRC (Lubumbashi / East)',
     corridorType: 'regional',
     mode: 'Road Corridor',
-    transitPlaceholder: '[XX–XX Days · Est.]',
+    transitPlaceholder: '≈8–12 days',
     notes: 'Project cargo, mining supplies & general freight.',
   },
   {
@@ -296,7 +296,7 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'Comoros (Moroni)',
     corridorType: 'islands',
     mode: 'Indian Ocean Sea / Air',
-    transitPlaceholder: '[XX–XX Days · Est.]',
+    transitPlaceholder: '≈5–10 days',
     notes: 'Consolidated LCL and commercial parcels.',
   },
   {
@@ -305,7 +305,7 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'Seychelles (Victoria)',
     corridorType: 'islands',
     mode: 'Indian Ocean Sea / Air',
-    transitPlaceholder: '[XX–XX Days · Est.]',
+    transitPlaceholder: '≈7–12 days',
     notes: 'Temperature-sensitive & retail replenishment.',
   },
   {
@@ -314,7 +314,7 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'Mauritius (Port Louis)',
     corridorType: 'islands',
     mode: 'Ocean FCL / LCL',
-    transitPlaceholder: '[XX–XX Days · Est.]',
+    transitPlaceholder: '≈10–15 days',
     notes: 'Direct feeder connection across the Indian Ocean.',
   },
   {
@@ -323,8 +323,8 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'Dar es Salaam (Inbound)',
     corridorType: 'inbound',
     mode: 'Ocean LCL / FCL & Air',
-    transitPlaceholder: '[XX–XX Days · Est.]',
-    notes: 'Weekly consolidation hub for Gulf & re-export goods.',
+    transitPlaceholder: '≈14–21 days',
+    notes: 'Consolidation hub for Gulf & re-export goods.',
   },
   {
     id: 'cn-tz',
@@ -332,7 +332,7 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'Dar es Salaam (Inbound)',
     corridorType: 'inbound',
     mode: 'Ocean LCL / FCL & Air',
-    transitPlaceholder: '[XX–XX Days · Est.]',
+    transitPlaceholder: '≈25–35 days',
     notes: 'Supplier pickup, consolidation & pre-clearance.',
   },
   {
@@ -341,7 +341,7 @@ export const ROUTE_LANES: RouteLane[] = [
     destination: 'Dar es Salaam (Inbound)',
     corridorType: 'inbound',
     mode: 'Ocean LCL / FCL & Air',
-    transitPlaceholder: '[XX–XX Days · Est.]',
+    transitPlaceholder: '≈14–20 days',
     notes: 'Pharmaceuticals, spares, machinery & FMCG.',
   },
 ];
@@ -399,32 +399,6 @@ export const HOW_IT_WORKS_STEPS = [
   },
 ];
 
-export const TESTIMONIALS = [
-  {
-    id: 't1',
-    quote:
-      '[Client testimonial placeholder — to be populated with verified shipper feedback on Dar es Salaam customs clearance and LCL consolidation timelines.]',
-    author: '[Client Name Placeholder]',
-    role: '[Operations Manager · Importer]',
-    route: 'Dubai → Dar es Salaam',
-  },
-  {
-    id: 't2',
-    quote:
-      '[Client testimonial placeholder — to be populated with verified feedback from regional cross-border trade partners along the Central Corridor.]',
-    author: '[Client Name Placeholder]',
-    role: '[Supply Chain Lead · Distributor]',
-    route: 'Dar es Salaam → Kampala',
-  },
-  {
-    id: 't3',
-    quote:
-      '[Client testimonial placeholder — to be populated with verified feedback on Indian Ocean island feeder reliability and documentation accuracy.]',
-    author: '[Client Name Placeholder]',
-    role: '[Procurement Director · Retail]',
-    route: 'Guangzhou → Zanzibar',
-  },
-];
 
 export const ALL_SERVICES: ServiceItem[] = [
   {
@@ -570,16 +544,16 @@ export const SAMPLE_TRACKING_SHIPMENT = {
   origin: 'Jebel Ali Port, UAE',
   destination: 'Dar es Salaam, Tanzania',
   serviceMode: 'Ocean LCL Consolidation',
-  cargoSummary: '[XX CBM · XX Cartons · General Commercial Goods]',
-  vesselPlaceholder: '[Vessel / Voyage Placeholder]',
-  etaPlaceholder: '[DD MMM 2026 · Est.]',
+  cargoSummary: '6.4 CBM · 48 cartons · General commercial goods',
+  vesselPlaceholder: 'Sample vessel · Voy. 2611E',
+  etaPlaceholder: '28 Nov 2026 · Est.',
   stages: [
     {
       id: 'booked',
       label: 'Booked',
       labelSw: 'Imewekwa',
       location: 'Dar es Salaam Desk',
-      timestampPlaceholder: '[DD MMM · HH:MM EAT]',
+      timestampPlaceholder: '03 Nov · 10:15 EAT',
       status: 'completed',
       detail: 'Booking reference issued and shipping instructions verified.',
     },
@@ -588,7 +562,7 @@ export const SAMPLE_TRACKING_SHIPMENT = {
       label: 'Picked up',
       labelSw: 'Imepokelewa',
       location: 'Jebel Ali Consolidation Hub, UAE',
-      timestampPlaceholder: '[DD MMM · HH:MM GST]',
+      timestampPlaceholder: '07 Nov · 14:30 GST',
       status: 'completed',
       detail: 'Cargo received, measured, and tallied at origin warehouse.',
     },
@@ -597,7 +571,7 @@ export const SAMPLE_TRACKING_SHIPMENT = {
       label: 'At origin port',
       labelSw: 'Bandari ya Asili',
       location: 'Jebel Ali Terminal',
-      timestampPlaceholder: '[DD MMM · HH:MM GST]',
+      timestampPlaceholder: '10 Nov · 09:00 GST',
       status: 'completed',
       detail: 'Stuffed into consolidated container and gated into export terminal.',
     },
@@ -606,7 +580,7 @@ export const SAMPLE_TRACKING_SHIPMENT = {
       label: 'In transit',
       labelSw: 'Safarini',
       location: 'Indian Ocean Maritime Lane',
-      timestampPlaceholder: '[DD MMM · In Progress]',
+      timestampPlaceholder: '13 Nov · In progress',
       status: 'current',
       detail: 'Vessel en route to Dar es Salaam Port. Pre-arrival manifest submitted.',
     },
@@ -615,7 +589,7 @@ export const SAMPLE_TRACKING_SHIPMENT = {
       label: 'Customs cleared',
       labelSw: 'Forodha Imekamilika',
       location: 'Dar es Salaam Port (TANCIS)',
-      timestampPlaceholder: '[Pending]',
+      timestampPlaceholder: 'Expected 28 Nov',
       status: 'upcoming',
       detail: 'TRA assessment, port release, and deconsolidation gate pass.',
     },
@@ -624,7 +598,7 @@ export const SAMPLE_TRACKING_SHIPMENT = {
       label: 'Out for delivery',
       labelSw: 'Njiani Kufikishwa',
       location: 'Dar es Salaam Metro',
-      timestampPlaceholder: '[Pending]',
+      timestampPlaceholder: 'Expected 01 Dec',
       status: 'upcoming',
       detail: 'Dispatched via dedicated delivery vehicle to receiver address.',
     },
@@ -633,7 +607,7 @@ export const SAMPLE_TRACKING_SHIPMENT = {
       label: 'Delivered',
       labelSw: 'Imefikishwa',
       location: 'Receiver Warehouse',
-      timestampPlaceholder: '[Pending]',
+      timestampPlaceholder: 'Expected 02 Dec',
       status: 'upcoming',
       detail: 'Signed proof of delivery uploaded to client record.',
     },
@@ -669,25 +643,25 @@ export const ABOUT_VALUES = [
 
 export const LEADERSHIP_PLACEHOLDERS = [
   {
-    initials: '[MD]',
-    name: '[Managing Director — Name Placeholder]',
-    role: 'Managing Director',
-    location: 'Dar es Salaam, Tanzania',
-    bio: '[Executive biography placeholder — commercial leadership, regional trade partnerships, and governance under BRELA registration.]',
+    initials: 'MG',
+    name: 'Management',
+    role: 'Commercial & client accounts',
+    location: 'Kariakoo, Dar es Salaam',
+    bio: 'Rates, contracts and one point of contact for every client account, from first quote to final invoice.',
   },
   {
-    initials: '[HC]',
-    name: '[Head of Customs & Compliance — Name Placeholder]',
-    role: 'Head of Customs & Regulatory Affairs',
+    initials: 'CC',
+    name: 'Customs & Compliance',
+    role: 'Clearance & regulatory affairs',
     location: 'Dar es Salaam Port',
-    bio: '[Biography placeholder — TANCIS clearance operations, tariff advisory, and regional transit bond management.]',
+    bio: 'TANCIS entries, HS classification, permits and transit bonds for Tanzania and onward to Uganda, Zambia, Rwanda and DRC.',
   },
   {
-    initials: '[OL]',
-    name: '[Operations Lead — Name Placeholder]',
-    role: 'Operations & Consolidation Lead',
-    location: 'Dar es Salaam, Tanzania',
-    bio: '[Biography placeholder — LCL consolidation schedules from UAE, China, and India plus East African corridor dispatch.]',
+    initials: 'OP',
+    name: 'Operations',
+    role: 'Consolidation & dispatch',
+    location: 'Dar es Salaam · Mombasa corridor',
+    bio: 'LCL consolidation from the UAE, China and India, truck dispatch and milestone updates until proof of delivery.',
   },
 ];
 

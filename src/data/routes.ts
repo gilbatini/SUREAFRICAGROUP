@@ -133,7 +133,7 @@ export const ROUTES: RouteDef[] = [
       { label: 'Dar es Salaam → Mutukula', value: '≈1,470 km', note: 'Road distance' },
       { label: 'Dar es Salaam → Kampala', value: '≈1,715 km', note: 'Road distance' },
       { label: 'Border crossing', value: 'Mutukula OSBP', note: 'One-stop TRA + URA clearance' },
-      { label: 'Transit time', value: '[XX–XX days]', note: 'Confirmed per booking' },
+      { label: 'Transit time', value: '≈4–7 days', note: 'Road, after port release · indicative' },
     ],
     stops: [
       { name: 'Dar es Salaam Port', region: 'Dar es Salaam', kind: 'port', km: '0 km', note: 'Discharge, TANCIS transit entry, bond' },
@@ -228,7 +228,7 @@ export const ROUTES: RouteDef[] = [
       { label: 'Origin ports', value: 'Shanghai · Ningbo · Shenzhen · Guangzhou', note: 'Plus Yiwu consolidation' },
       { label: 'Mombasa → Kampala', value: '≈1,170 km', note: 'Road via Malaba' },
       { label: 'Border crossing', value: 'Malaba OSBP', note: 'Busia as alternative' },
-      { label: 'Transit time', value: '[XX–XX days]', note: 'Sea + road, confirmed per booking' },
+      { label: 'Transit time', value: '≈30–40 days', note: 'Sea + road, door to Kampala · indicative' },
     ],
     stops: [
       { name: 'Supplier pickup', region: 'China', kind: 'origin', note: 'Factory collection, export customs, LCL consolidation' },
@@ -279,7 +279,7 @@ export const ROUTES: RouteDef[] = [
       { label: 'Origin', value: 'Jebel Ali · Dubai', note: 'Consolidation and supplier pickup' },
       { label: 'Mombasa → Kampala', value: '≈1,170 km', note: 'Road via Malaba' },
       { label: 'Border crossing', value: 'Malaba OSBP', note: 'Busia as alternative' },
-      { label: 'Transit time', value: '[XX–XX days]', note: 'Sea + road, confirmed per booking' },
+      { label: 'Transit time', value: '≈18–25 days', note: 'Sea + road, door to Kampala · indicative' },
     ],
     stops: [
       { name: 'Jebel Ali / Dubai', region: 'UAE', kind: 'origin', note: 'Supplier pickup, consolidation, export documents' },
@@ -330,7 +330,7 @@ export const ROUTES: RouteDef[] = [
       { label: 'Origin ports', value: 'Yokohama · Nagoya · Osaka · Kobe', note: 'RoRo or container' },
       { label: 'Mombasa → Kampala', value: '≈1,170 km', note: 'Road via Malaba' },
       { label: 'Vehicle age limit', value: 'Under 15 years', note: 'Check with URA before buying' },
-      { label: 'Transit time', value: '[XX–XX days]', note: 'Sea + road, confirmed per booking' },
+      { label: 'Transit time', value: '≈35–50 days', note: 'RoRo + road, port to Kampala · indicative' },
     ],
     stops: [
       { name: 'Auction / dealer in Japan', region: 'Japan', kind: 'origin', note: 'Purchase, de-registration, pre-export roadworthiness inspection' },

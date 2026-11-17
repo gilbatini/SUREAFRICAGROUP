@@ -7,7 +7,7 @@ import {
   Search,
   Ship,
 } from 'lucide-react';
-import { SAMPLE_TRACKING_SHIPMENT } from '../data/content';
+import { SAMPLE_TRACKING_SHIPMENT, CONTACT } from '../data/content';
 import { Language, PageId, ViewportVariant } from '../types';
 import { MonoLabel } from '../components/BrandMark';
 import { FloatingNavbar, GlobalFooter, MobileWhatsAppFab } from '../components/GlobalChrome';
@@ -40,7 +40,7 @@ export const TrackingPage: React.FC<PageProps> = ({
     }
     setUiState('loading');
     window.setTimeout(() => {
-      if (cleaned === SAMPLE_TRACKING_SHIPMENT.trackingNumber || cleaned.startsWith('SA-')) {
+      if (cleaned === SAMPLE_TRACKING_SHIPMENT.trackingNumber) {
         setUiState('result');
       } else {
         setUiState('error');
@@ -112,33 +112,9 @@ export const TrackingPage: React.FC<PageProps> = ({
               </div>
             </form>
 
-            {/* Interactive State Inspector */}
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[#6B7280] mr-1">
-                UI State Preview:
-              </span>
-              {(
-                [
-                  { id: 'result', label: 'Active Result' },
-                  { id: 'empty', label: 'Empty State' },
-                  { id: 'loading', label: 'Loading' },
-                  { id: 'error', label: 'Not Found / Error' },
-                ] as const
-              ).map((st) => (
-                <button
-                  key={st.id}
-                  type="button"
-                  onClick={() => setUiState(st.id)}
-                  className={`px-2.5 py-1 rounded border font-mono text-[10px] uppercase tracking-wider transition-colors cursor-pointer ${
-                    uiState === st.id
-                      ? 'bg-[#0B0D12] border-[#0B0D12] text-white'
-                      : 'bg-white border-[#D1D5DB] text-[#4B5563] hover:border-[#0B0D12]'
-                  }`}
-                >
-                  {st.label}
-                </button>
-              ))}
-            </div>
+            <p className="mt-3 font-mono text-[10px] uppercase tracking-wider text-[#6B7280]">
+              Live tracking is coming soon. Meanwhile, send your reference on WhatsApp for a same-day update.
+            </p>
           </div>
         </div>
       </div>
@@ -187,18 +163,18 @@ export const TrackingPage: React.FC<PageProps> = ({
 
         {/* ERROR STATE */}
         {uiState === 'error' && (
-          <div className="max-w-3xl mx-auto rounded-xl border border-[#DC2626]/30 bg-[#FEF2F2] p-8">
+          <div className="max-w-3xl mx-auto rounded-xl border border-[#1434CB]/25 bg-[#EEF2FF] p-8">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-[#DC2626] mt-0.5 shrink-0" strokeWidth={1.5} />
+              <AlertTriangle className="w-5 h-5 text-[#1434CB] mt-0.5 shrink-0" strokeWidth={1.5} />
               <div>
-                <p className="font-mono text-xs uppercase tracking-wider text-[#DC2626]">
-                  REFERENCE NOT FOUND
+                <p className="font-mono text-xs uppercase tracking-wider text-[#1434CB]">
+                  TRACKING VIA WHATSAPP
                 </p>
                 <h2 className="mt-1 text-lg font-medium text-[#0B0D12]">
-                  We could not locate &ldquo;{query || 'that reference'}&rdquo;
+                  Live online tracking for &ldquo;{query || 'that reference'}&rdquo; is not available yet
                 </h2>
                 <p className="mt-1.5 text-sm text-[#4B5563]">
-                  Check your booking confirmation email for the exact SA-TZ reference code, or contact our Dar es Salaam desk for assistance.
+                  Send your reference on WhatsApp ({CONTACT.phoneDisplay}) and the operations desk will reply with the latest milestone.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-3">
                   <button
@@ -213,10 +189,10 @@ export const TrackingPage: React.FC<PageProps> = ({
                   </button>
                   <button
                     type="button"
-                    onClick={() => onNavigate('contact')}
+                    onClick={() => window.open(CONTACT.whatsappUrl, '_blank', 'noopener')}
                     className="px-4 py-2 rounded-lg border border-[#D1D5DB] bg-white text-[#0B0D12] font-mono text-xs uppercase tracking-wider cursor-pointer"
                   >
-                    Contact Desk
+                    Ask on WhatsApp
                   </button>
                 </div>
               </div>
@@ -237,7 +213,7 @@ export const TrackingPage: React.FC<PageProps> = ({
                 <div className="flex items-center justify-between gap-2 pb-4 border-b border-[#E2E5EB]">
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-wider text-[#6B7280]">
-                      TRACKING REFERENCE (SAMPLE)
+                      SAMPLE SHIPMENT · DEMO DATA
                     </p>
                     <p className="mt-1 font-mono text-base font-medium text-[#0B0D12] tabular-nums">
                       {SAMPLE_TRACKING_SHIPMENT.trackingNumber}

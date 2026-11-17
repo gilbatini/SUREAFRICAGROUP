@@ -8,7 +8,6 @@ import {
   IMAGES,
   INDUSTRIES,
   ROUTE_LANES,
-  TESTIMONIALS,
 } from '../data/content';
 import { ROUTES } from '../data/routes';
 import { Language, PageId, RouteLane, ViewportVariant } from '../types';
@@ -22,6 +21,24 @@ interface PageProps {
   onToggleLang: (lang: Language) => void;
   onNavigate: (page: PageId, prefillRoute?: string) => void;
 }
+
+const WHY_SURE_AFRICA = [
+  {
+    code: '01',
+    title: 'One coordinator, start to finish',
+    body: 'A single contact handles your quote, booking, customs and delivery, on WhatsApp, phone or email.',
+  },
+  {
+    code: '02',
+    title: 'Documents checked before arrival',
+    body: 'We review invoices, packing lists and permits before the vessel berths, so cargo is not held at the port.',
+  },
+  {
+    code: '03',
+    title: 'Clear, itemised quotes',
+    body: 'Freight, port charges and clearance costs listed line by line and agreed before anything moves.',
+  },
+];
 
 export const HomePage: React.FC<PageProps> = ({
   variant,
@@ -43,7 +60,7 @@ export const HomePage: React.FC<PageProps> = ({
       destination: r.lane.destination,
       corridorType: 'regional' as const,
       mode: r.lane.mode,
-      transitPlaceholder: '[XX–XX Days · Est.]',
+      transitPlaceholder: r.facts.find((f) => f.label === 'Transit time')?.value ?? '',
       notes: r.lane.notes,
     })),
     ...ROUTE_LANES.filter((l) => l.id !== 'tz-ug'),
@@ -53,10 +70,6 @@ export const HomePage: React.FC<PageProps> = ({
       ? allLanes
       : allLanes.filter((r) => r.corridorType === routeFilter);
 
-  const partnerSlots = Array.from({ length: 12 }, (_, idx) => ({
-    id: idx + 1,
-    code: `PARTNER ${String(idx + 1).padStart(2, '0')}`,
-  }));
 
   return (
     <div className="bg-white text-[#0B0D12] font-sans relative">
@@ -120,7 +133,7 @@ export const HomePage: React.FC<PageProps> = ({
                 </a>
               </div>
 
-              {/* 3 Stat Tiles (Placeholders clearly marked) */}
+              {/* 3 Stat Tiles */}
               <div
                 className={`mt-8 grid grid-cols-3 gap-2.5 ${
                   isMobile ? '' : 'max-w-lg'
@@ -142,7 +155,7 @@ export const HomePage: React.FC<PageProps> = ({
                       {stat.value}
                     </p>
                     <p className="font-mono text-[9px] uppercase tracking-wider text-[#9CA3AF] mt-0.5">
-                      [{stat.note}]
+                      {stat.note}
                     </p>
                   </div>
                 ))}
@@ -458,34 +471,6 @@ export const HomePage: React.FC<PageProps> = ({
         </div>
       </section>
 
-      {/* ■ PARTNERS (Empty Placeholder Slots) */}
-      <section className={`bg-[#F4F5F7] border-b border-[#E2E5EB] ${isMobile ? 'px-4 py-10' : 'px-12 py-14'}`}>
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
-          <MonoLabel>{t.sections.partners}</MonoLabel>
-          <span className="font-mono text-[11px] text-[#6B7280]">
-            [Placeholder slots — awaiting verified carrier & client logos]
-          </span>
-        </div>
-
-        <div
-          className={`grid bg-white border-t border-l border-[#E2E5EB] ${
-            isMobile ? 'grid-cols-2' : 'grid-cols-6'
-          }`}
-        >
-          {partnerSlots.map((slot) => (
-            <div
-              key={slot.id}
-              className="border-r border-b border-[#E2E5EB] h-20 flex flex-col items-center justify-center px-3"
-            >
-              <div className="w-5 h-5 rounded border border-dashed border-[#CBD5E1] mb-1.5" />
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[#9CA3AF]">
-                [{slot.code}]
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ■ HOW IT WORKS (4-step Accordion with Dark Expanded Step) */}
       <section
         id={`${variant}-how-it-works`}
@@ -577,29 +562,22 @@ export const HomePage: React.FC<PageProps> = ({
 
       <FaqSection variant={variant} lang={lang} />
 
-      {/* ■ TESTIMONIALS (3 Placeholder Cards) */}
+      {/* ■ WHY SURE AFRICA */}
       <section className={`border-b border-[#E2E5EB] ${isMobile ? 'px-4 py-10' : 'px-12 py-16'}`}>
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
-          <MonoLabel>{t.sections.testimonials}</MonoLabel>
-          <span className="font-mono text-[11px] text-[#6B7280]">
-            [Placeholder quotes — verified client reviews added post-delivery]
-          </span>
-        </div>
-
-        <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-3 gap-5'}`}>
-          {TESTIMONIALS.map((item) => (
-            <article
-              key={item.id}
-              className="bg-[#F4F5F7] border border-[#E2E5EB] rounded-xl p-6 flex flex-col justify-between"
-            >
-              <p className="text-sm leading-relaxed text-[#0B0D12]">{item.quote}</p>
-              <div className="mt-6 pt-4 border-t border-[#E2E5EB]">
-                <p className="text-sm font-medium text-[#0B0D12]">{item.author}</p>
-                <p className="text-xs text-[#4B5563] mt-0.5">{item.role}</p>
-                <p className="font-mono text-[10px] uppercase tracking-wider text-[#1434CB] mt-2">
-                  {item.route}
-                </p>
-              </div>
+        <MonoLabel>{lang === 'sw' ? 'KWA NINI SURE AFRICA' : 'WHY SURE AFRICA'}</MonoLabel>
+        <h2
+          className={`mt-3 font-medium tracking-tight text-[#0B0D12] ${
+            isMobile ? 'text-2xl' : 'text-[34px]'
+          }`}
+        >
+          {lang === 'sw' ? 'Tunachoahidi kwa kila mzigo' : 'What you get on every shipment'}
+        </h2>
+        <div className={`mt-8 grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-3 gap-5'}`}>
+          {WHY_SURE_AFRICA.map((item) => (
+            <article key={item.title} className="bg-[#F4F5F7] border border-[#E2E5EB] rounded-xl p-6">
+              <p className="font-mono text-xs text-[#1434CB]">{item.code}</p>
+              <h3 className="mt-6 text-base font-medium text-[#0B0D12]">{item.title}</h3>
+              <p className="mt-2 text-sm text-[#4B5563] leading-relaxed">{item.body}</p>
             </article>
           ))}
         </div>
@@ -613,7 +591,7 @@ export const HomePage: React.FC<PageProps> = ({
           }`}
         >
           <div>
-            <MonoLabel tone="gold">SURE AFRICA GROUP (TANZANIA) LIMITED</MonoLabel>
+            <MonoLabel tone="gold">SURE AFRICA GROUP TANZANIA LTD.</MonoLabel>
             <h2
               className={`mt-2 font-medium tracking-[-0.02em] ${
                 isMobile ? 'text-2xl' : 'text-[36px]'

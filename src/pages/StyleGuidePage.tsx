@@ -178,7 +178,7 @@ export const StyleGuidePage: React.FC<StyleGuideProps> = ({ variant }) => {
                 MONO LABEL · 11PX
               </span>
               <div className="flex-1">
-                <MonoLabel>WHAT WE DO · SA-TZ-2026-0104 · [XX+ SHIPMENTS]</MonoLabel>
+                <MonoLabel>WHAT WE DO · SA-TZ-2026-0104 · 12 SERVICES</MonoLabel>
               </div>
             </div>
           </div>

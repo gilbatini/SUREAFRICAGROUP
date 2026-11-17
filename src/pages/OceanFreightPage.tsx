@@ -28,10 +28,6 @@ export const OceanFreightPage: React.FC<PageProps> = ({
   const t = COPY[lang];
   const [activeStep, setActiveStep] = useState<number>(1);
 
-  const partnerSlots = Array.from({ length: 12 }, (_, idx) => ({
-    id: idx + 1,
-    code: `PARTNER ${String(idx + 1).padStart(2, '0')}`,
-  }));
 
   return (
     <div className="bg-white text-[#0B0D12] font-sans relative">
@@ -127,9 +123,9 @@ export const OceanFreightPage: React.FC<PageProps> = ({
 
               <div className="grid grid-cols-3 gap-3 mt-3 md:mt-0">
                 {[
-                  { label: 'Ocean lanes', value: '[XX+]' },
-                  { label: 'Days avg transit', value: '[XX]' },
-                  { label: 'On-time rate', value: '[XX%]' },
+                  { label: 'Container sizes', value: '20 · 40 · HC', note: 'Plus reefer & flat-rack' },
+                  { label: 'Load types', value: 'FCL + LCL', note: 'Full or shared container' },
+                  { label: 'LCL hubs', value: '3', note: 'UAE · China · India' },
                 ].map((stat) => (
                   <div
                     key={stat.label}
@@ -141,7 +137,7 @@ export const OceanFreightPage: React.FC<PageProps> = ({
                     <p className="mt-1 text-xl md:text-2xl font-medium text-[#0B0D12] tabular-nums">
                       {stat.value}
                     </p>
-                    <p className="font-mono text-[9px] uppercase text-[#9CA3AF]">[Placeholder]</p>
+                    <p className="font-mono text-[9px] uppercase text-[#9CA3AF]">{stat.note}</p>
                   </div>
                 ))}
               </div>
@@ -149,25 +145,6 @@ export const OceanFreightPage: React.FC<PageProps> = ({
           </div>
         </div>
       </div>
-
-      {/* ■ PARTNERS PLACEHOLDER STRIP */}
-      <section className={`border-b border-[#E2E5EB] ${isMobile ? 'px-4 py-8' : 'px-12 py-12'}`}>
-        <MonoLabel>{t.sections.partners}</MonoLabel>
-        <div
-          className={`mt-5 grid border-t border-l border-[#E2E5EB] ${
-            isMobile ? 'grid-cols-2' : 'grid-cols-6'
-          }`}
-        >
-          {partnerSlots.map((slot) => (
-            <div
-              key={slot.id}
-              className="border-r border-b border-[#E2E5EB] h-16 flex items-center justify-center font-mono text-[10px] uppercase tracking-wider text-[#9CA3AF]"
-            >
-              [{slot.code}]
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* ■ OUR OCEAN FREIGHT SERVICES: FCL vs LCL */}
       <section className={`bg-[#F4F5F7] border-b border-[#E2E5EB] ${isMobile ? 'px-4 py-10' : 'px-12 py-16'}`}>

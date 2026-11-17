@@ -93,7 +93,7 @@ export const FloatingNavbar: React.FC<NavProps> = ({
           <SureAfricaLogo
             size={isMobile ? 'sm' : 'md'}
             showWordmark={true}
-            subline="Group Tanzania-Uganda Ltd."
+            subline="Group Tanzania Ltd."
           />
         </button>
 
@@ -356,7 +356,9 @@ export const GlobalFooter: React.FC<FooterProps> = ({
               <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#4B5563] mb-2">
                 {t.footer.contactHeading}
               </p>
-              <p className="text-sm text-[#0B0D12]">[info@sureafrica.co.tz]</p>
+              <p className="text-sm text-[#0B0D12]">
+                <a href={CONTACT.emailHref} className="hover:text-[#1434CB] underline-offset-2 hover:underline">{CONTACT.email}</a>
+              </p>
               <p className="text-sm text-[#0B0D12] mt-1 tabular-nums">
                 <a href={CONTACT.phoneTel} className="hover:text-[#1434CB] underline-offset-2 hover:underline">{CONTACT.phoneDisplay}</a>
               </p>
@@ -371,8 +373,13 @@ export const GlobalFooter: React.FC<FooterProps> = ({
               <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#4B5563] mb-2">
                 {t.footer.headOfficeHeading}
               </p>
-              <p className="text-sm text-[#0B0D12]">[Office Address Placeholder]</p>
-              <p className="text-sm text-[#0B0D12]">Dar es Salaam, Tanzania</p>
+              <a href={CONTACT.mapsUrl} target="_blank" rel="noopener noreferrer" className="block text-sm text-[#0B0D12] hover:text-[#1434CB]">
+                {CONTACT.addressLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </a>
               <p className="text-xs text-[#4B5563] mt-1">BRELA Reg. (2026)</p>
             </div>
           </div>

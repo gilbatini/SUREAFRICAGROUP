@@ -81,7 +81,7 @@ export const StyleGuidePage: React.FC<StyleGuideProps> = ({ variant }) => {
               One-Page Style Guide
             </h1>
             <p className="mt-2 text-sm text-[#4B5563] max-w-2xl">
-              Visual tokens, editorial typography scale, 8px spacing grid, interactive states, and 1.5px stroke iconography for Sure Africa Group (Tanzania) Limited.
+              Visual tokens, editorial typography scale, 8px spacing grid, interactive states, and 1.5px stroke iconography for Sure Africa Group Tanzania Ltd.
             </p>
           </div>
           <div className="bg-white border border-[#E2E5EB] rounded-xl px-5 py-3.5 shrink-0">

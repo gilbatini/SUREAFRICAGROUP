@@ -83,9 +83,14 @@ export const ContactPage: React.FC<PageProps> = ({
             <div className="rounded-xl border border-[#E2E5EB] bg-[#F4F5F7] overflow-hidden">
               <div className="px-4 py-2.5 border-b border-[#E2E5EB] bg-white flex items-center justify-between">
                 <MonoLabel>DAR ES SALAAM LOCATION MAP</MonoLabel>
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#6B7280]">
-                  [Map Placeholder]
-                </span>
+                <a
+                  href={CONTACT.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[10px] uppercase tracking-wider text-[#1434CB] hover:underline"
+                >
+                  Directions ↗
+                </a>
               </div>
               <div className="relative h-56 md:h-64 bg-[#EAECEF] flex items-center justify-center p-6">
                 {/* Clean Architectural Grid Vector Map Placeholder */}
@@ -106,11 +111,19 @@ export const ContactPage: React.FC<PageProps> = ({
                   </div>
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-wider text-[#1434CB]">
-                      DAR ES SALAAM PORT CORRIDOR
+                      KARIAKOO · DAR ES SALAAM
                     </p>
                     <p className="text-xs font-medium text-[#0B0D12]">
-                      [Office Address Placeholder — Map Embed Slot]
+                      Jeelan Building, 5th Floor · Kariakoo
                     </p>
+                    <a
+                      href={CONTACT.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-[10px] uppercase tracking-wider text-[#1434CB] hover:underline"
+                    >
+                      Open in Google Maps →
+                    </a>
                   </div>
                 </div>
               </div>
@@ -121,7 +134,7 @@ export const ContactPage: React.FC<PageProps> = ({
               <div>
                 <MonoLabel tone="cobalt">HEAD OFFICE · TANZANIA</MonoLabel>
                 <h2 className="mt-2 text-lg font-medium text-[#0B0D12]">
-                  Sure Africa Group (Tanzania) Limited
+                  {CONTACT.companyName}
                 </h2>
               </div>
 
@@ -132,11 +145,18 @@ export const ContactPage: React.FC<PageProps> = ({
                     <p className="font-mono text-[10px] uppercase tracking-wider text-[#6B7280]">
                       Address
                     </p>
-                    <p className="text-sm text-[#0B0D12] mt-0.5">
-                      [Plot / Building Placeholder]
-                      <br />
-                      Dar es Salaam, Tanzania
-                    </p>
+                    <a
+                      href={CONTACT.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-sm text-[#0B0D12] mt-0.5 hover:text-[#1434CB]"
+                    >
+                      {CONTACT.addressLines.map((line) => (
+                        <span key={line} className="block">
+                          {line}
+                        </span>
+                      ))}
+                    </a>
                   </div>
                 </div>
 
@@ -185,7 +205,7 @@ export const ContactPage: React.FC<PageProps> = ({
                       Email
                     </p>
                     <p className="text-sm text-[#0B0D12] mt-0.5">
-                      [info@sureafrica.co.tz]
+                      <a href={CONTACT.emailHref} className="hover:text-[#1434CB] underline-offset-2 hover:underline">{CONTACT.email}</a>
                     </p>
                   </div>
                 </div>

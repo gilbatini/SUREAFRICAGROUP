@@ -107,7 +107,7 @@ export default function App() {
   // Keep URL + document title in sync with the live page
   useEffect(() => {
     if (viewMode !== 'live') {
-      document.title = 'Design System — Sure Africa Group Tanzania-Uganda Ltd.';
+      document.title = 'Design System — Sure Africa Group Tanzania Ltd.';
       return;
     }
     const path = PAGE_PATHS[activeLivePage];
@@ -116,7 +116,7 @@ export default function App() {
     }
     document.title =
       activeLivePage === 'home'
-        ? `Sure Africa Group Tanzania-Uganda Ltd. — ${PAGE_TITLES.home}`
+        ? `Sure Africa Group Tanzania Ltd. — ${PAGE_TITLES.home}`
         : `${PAGE_TITLES[activeLivePage]} — Sure Africa Group`;
   }, [viewMode, activeLivePage]);
 

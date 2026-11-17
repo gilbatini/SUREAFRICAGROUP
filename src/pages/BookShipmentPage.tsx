@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
-import { IMAGES } from '../data/content';
+import { IMAGES, CONTACT } from '../data/content';
 import { Language, PageId, ViewportVariant } from '../types';
 import { MediaFrame, MonoLabel } from '../components/BrandMark';
 import { FloatingNavbar, GlobalFooter, MobileWhatsAppFab } from '../components/GlobalChrome';
@@ -103,7 +103,7 @@ export const BookShipmentPage: React.FC<PageProps> = ({
             {/* Bottom-Left Contact Prompt */}
             <div className={`${isMobile ? '' : 'col-span-6 pb-4'} text-white`}>
               <p className="font-mono text-xs text-white/85">
-                ↳ [info@sureafrica.co.tz]
+                ↳ <a href={CONTACT.emailHref} className="hover:underline">{CONTACT.email}</a>
               </p>
               <h1
                 className={`mt-2 font-medium tracking-[-0.025em] ${

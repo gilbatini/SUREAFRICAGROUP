@@ -9,6 +9,17 @@ export const IMAGES = {
 } as const;
 
 export const CONTACT = {
+  companyName: 'Sure Africa Group Tanzania Ltd.',
+  email: 'info@africangroup.com',
+  emailHref: 'mailto:info@africangroup.com',
+  addressLines: [
+    'Jeelan Building, 5th Floor',
+    'Kariakoo, Livingstone & Udowe Streets',
+    'Dar es Salaam, Tanzania',
+  ],
+  mapsUrl:
+    'https://www.google.com/maps/search/?api=1&query=' +
+    encodeURIComponent('Jeelan Building, Livingstone Street, Kariakoo, Dar es Salaam, Tanzania'),
   phoneDisplay: '+256 703 487880',
   phoneTel: 'tel:+256703487880',
   whatsappUrl:
@@ -113,7 +124,7 @@ export const COPY: Record<
         'Freight forwarding, customs clearance, warehousing, and consolidated LCL shipping via Dar es Salaam.',
       primaryCta: 'REQUEST A QUOTE',
       secondaryCta: 'SEE HOW IT WORKS',
-      registeredNote: 'Sure Africa Group Tanzania-Uganda Ltd. · Dar es Salaam · Kampala',
+      registeredNote: 'Sure Africa Group Tanzania Ltd. · Kariakoo, Dar es Salaam',
     },
     sections: {
       whatWeDo: 'WHAT WE DO',
@@ -144,7 +155,7 @@ export const COPY: Record<
       headOfficeHeading: 'HEAD OFFICE',
       summary:
         'FREIGHT FORWARDING, CUSTOMS CLEARANCE, WAREHOUSING & LCL CONSOLIDATION FROM DAR ES SALAAM.',
-      copyright: '© 2026 Sure Africa Group (Tanzania) Limited.',
+      copyright: '© 2026 Sure Africa Group Tanzania Ltd.',
       privacy: 'Privacy Policy',
     },
   },
@@ -166,7 +177,7 @@ export const COPY: Record<
         'Usafirishaji wa mizigo, uondoshaji wa forodha, uhifadhi wa maghala na usafirishaji wa pamoja (LCL) kupitia Bandari ya Dar es Salaam.',
       primaryCta: 'OMBA BEI',
       secondaryCta: 'ONA JINSI INAVYOFANYA KAZI',
-      registeredNote: 'Sure Africa Group Tanzania-Uganda Ltd. · Dar es Salaam · Kampala',
+      registeredNote: 'Sure Africa Group Tanzania Ltd. · Kariakoo, Dar es Salaam',
     },
     sections: {
       whatWeDo: 'TUNACHOFANYA',
@@ -197,7 +208,7 @@ export const COPY: Record<
       headOfficeHeading: 'OFISI KUU',
       summary:
         'USAFIRISHAJI WA MIZIGO, FORODHA, MAGHALA NA LCL KUTOKA DAR ES SALAAM.',
-      copyright: '© 2026 Sure Africa Group (Tanzania) Limited.',
+      copyright: '© 2026 Sure Africa Group Tanzania Ltd.',
       privacy: 'Sera ya Faragha',
     },
   },

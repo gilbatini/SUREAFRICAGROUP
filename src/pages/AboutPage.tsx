@@ -50,7 +50,7 @@ export const AboutPage: React.FC<PageProps> = ({
                 Built in <span className="text-[#1434CB]">Dar es Salaam</span> to move East Africa&apos;s trade cleanly
               </h1>
               <p className="mt-4 text-sm md:text-base text-[#4B5563] leading-relaxed">
-                Sure Africa Group (Tanzania) Limited is a registered Tanzanian freight forwarding and logistics company (BRELA, 2026). We coordinate ocean, air, and road cargo, customs clearance, warehousing, and direct LCL consolidation from Dar es Salaam to East and Central Africa, the Indian Ocean islands, and global trade hubs.
+                Sure Africa Group Tanzania Ltd. is a registered Tanzanian freight forwarding and logistics company (BRELA, 2026). We coordinate ocean, air, and road cargo, customs clearance, warehousing, and direct LCL consolidation from Dar es Salaam to East and Central Africa, the Indian Ocean islands, and global trade hubs.
               </p>
               <div className="mt-6 inline-flex items-center gap-3 px-3.5 py-2 rounded-lg bg-white border border-[#E2E5EB] font-mono text-[11px] text-[#0B0D12]">
                 <span className="w-2 h-2 bg-[#1434CB]" aria-hidden="true" />
